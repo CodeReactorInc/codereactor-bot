@@ -30,7 +30,7 @@ function buildCommandList(module) {
   for(let i = 0;i < files.length;i++) {
 
     logger.info("Import module '"+files[i]+"'...");
-    let module = require(files[i]); 
+    let module = require(__dirname+"/../commands/"+module+"/"+files[i]); 
 
     logger.info("Loaded module '"+module.help.name+"'");
     commands.push(module.help);
