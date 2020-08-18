@@ -46,7 +46,7 @@ client.on('message', async (message) => {
   if (message.content.trim() === "<@!"+client.user.id+">" || message.content.trim() === "<@"+client.user.id+">" || message.content.trim() === "@"+client.user.tag) {
     message.channel.send("My prefix on '"+message.guild.name+"' are `"+server_config.prefix+"`");
     return;
-  }
+  } 
 
   if (!message.content.startsWith(server_config.prefix)) return;
 
