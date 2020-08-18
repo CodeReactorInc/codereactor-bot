@@ -29,7 +29,7 @@ function buildCommandList(module) {
 
   for(let i = 0;i < files.length;i++) {
 
-    logger.info("Import module...");
+    logger.info("Import module '"+files[i]+"'...");
     let module = require(files[i]); 
 
     logger.info("Loaded module '"+module.help.name+"'");
