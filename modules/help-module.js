@@ -53,8 +53,9 @@ function loadCommand(cmd, perms) {
   }
   
   logger.info("Prepare to load file '"+path+"'")
-  logger.info("Importing '"+cmd+"' and sending result...");
+  logger.info("Importing '"+cmd+"'...");
   let cmd_obj = require(path);
+  logger.info("Module loaded and sending result...");
   return cmd_obj.help;
 }
 
@@ -62,4 +63,4 @@ module.exports = {
   load_cmd: loadCommand,
   module_list: buildModuleList,
   cmd_list: buildCommandList
-}
+};
