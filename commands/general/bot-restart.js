@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 exports.run = (client, message, args, data) => {
   data.logger.info("Testing if message author are the bot owner...");
 
