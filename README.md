@@ -9,13 +9,11 @@ This bot aren't created for self host, if want install and execute he, you need 
 
 1. (OPTIONAL) Create a user for the bot and add privileges for he
 2. Create a database named "discordbot"
-3. Create all tables needed on your MariaDB Server, more below
+3. Create all tables needed on your MariaDB Server, [more info](https://github.com/CodeReactorInc/codereactor-bot#mariadb-needed-tables)
 4. Run after clone, run ``npm install`` to install declared dependencies
-5. Run ``npm install -g nodemon`` to install nodemon command
-6. Run ``npm install canvas`` to install the image render
-7. Run ``node init.js`` to generate config.json file
-8. Configure the ``config.json``, insert MariaDB login info, Discord token and another things
-9. And run it
+5. Run ``node init.js`` to generate config.json file
+6. Configure the ``config.json``, insert MariaDB login info, Discord token and another things
+7. And run it
 
 ## How to run?
 
@@ -30,16 +28,6 @@ Use ``npm start`` to run nodemon with correct arguments
 5. Push all data to your branch
 6. Create a Pull request on GitHub
 7. Wait the Code Reactor verify and approve your request
-
-## Why I need download Canvas and Nodemon?
-
-### Nodemon
-
-Nodemon need be install globally to use he as a shell command, and the package.json don't install global deps like Nodemon
-
-### Canvas
-
-The Code Reactor server use a modified version of Canvas, because the server are Android and the newest version of Canvas don't run on Android without a code modification
 
 ## MariaDB needed tables
 
@@ -98,5 +86,5 @@ This project has been created by Code Reactor with [GPL v3.0 license](https://gi
 
 - Name: Code Reactor Bot
 - Main category: General
-- Version: 0.0.0.1 Alpha
+- Version: 0.0.1 Alpha
 - Generation: 5
