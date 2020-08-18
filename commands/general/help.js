@@ -4,8 +4,8 @@ exports.run = (client, message, args, data) => {
     let modules = data.modules.help.module_list(data.server_config);
 
     data.logger.info("Constructing module list...");
-    for(let module in modules) {
-      msg += module + "\n";
+    for(let i = 0;i < modules.length;i++) {
+      msg += modules[i] + "\n";
     }
 
     message.channel.send(msg);
@@ -18,8 +18,8 @@ exports.run = (client, message, args, data) => {
       let msg = "**Available commands for '"+args[0]+"':**\n\n";
 
       data.logger.info("Constructing commands list...");
-      for(let command in commands) {
-        msg += data.server_config.prefix+command.name+" ["+command.permissions+"]\n";
+      for(let i = 0;i < commands.length;i++) {
+        msg += data.server_config.prefix+commands[i].name+" ["+commands[i].permissions+"]\n";
       }
 
       message.channel.send(msg);
