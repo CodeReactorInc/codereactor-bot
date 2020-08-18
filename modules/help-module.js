@@ -52,6 +52,7 @@ function loadCommand(cmd, perms) {
     return null;
   }
   
+  logger.info("Prepare to load file '"+path+"'")
   logger.info("Importing '"+cmd+"' and sending result...");
   let cmd_obj = require(path);
   return cmd_obj.help;
