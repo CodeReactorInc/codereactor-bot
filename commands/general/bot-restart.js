@@ -1,5 +1,3 @@
-const logger = require("../../libs/logger");
-
 exports.run = (client, message, args, data) => {
   data.logger.info("Testing if message author are the bot owner...");
 
@@ -10,7 +8,7 @@ exports.run = (client, message, args, data) => {
   }
 
   message.channel.send("Bot are restarting now...");
-  logger.info("NodeJS are restarting...");
+  data.logger.info("NodeJS are restarting...");
   fs.writeFileSync(__dirname+'/../../random.id', Math.random().toString());
 };
 
