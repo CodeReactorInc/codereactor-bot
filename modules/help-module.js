@@ -27,10 +27,10 @@ function buildCommandList(module) {
   logger.info("Loading directory for module '"+module+"'...");
   let files = fs.readdirSync(__dirname+"/../commands/"+module);
 
-  for(let file in files) {
+  for(let i = 0;i < files.length;i++) {
 
     logger.info("Import module...");
-    let module = require(file); 
+    let module = require(files[i]); 
 
     logger.info("Loaded module '"+module.help.name+"'");
     commands.push(module.help);
