@@ -35,11 +35,11 @@ exports.run = (client, message, args, data) => {
       let msg = "Name: "+data.server_config.prefix+command.name+"\n"+
         "Description: "+command.description+"\n"+
         "Permission needed: "+command.permissions+"\n"+
-        "Usage: '"+command.help[0]+"'";
+        "Usage: '"+command.usage[0]+"'";
       
       data.logger.info("Constructing usage list...");
-      for(let i = 1;i < command.help.length;i++) {
-        msg += ", '"+command.help[i]+"'";
+      for(let i = 1;i < command.usage.length;i++) {
+        msg += ", '"+command.usage[i]+"'";
       }
 
       message.channel.send(msg);
