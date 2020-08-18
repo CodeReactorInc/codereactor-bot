@@ -32,10 +32,10 @@ exports.run = (client, message, args, data) => {
         return;
       }
 
-      let msg = "Name: "+data.server_config.prefix+command.name+"\n"+
-        "Description: "+command.description+"\n"+
-        "Permission needed: "+command.permissions+"\n"+
-        "Usage: '"+command.usage[0]+"'";
+      let msg = "**Name:** "+data.server_config.prefix+command.name+"\n"+
+        "**Description:** "+command.description+"\n"+
+        "**Permission needed:** "+command.permissions+"\n"+
+        "**Usage:** '"+command.usage[0]+"'";
       
       data.logger.info("Constructing usage list...");
       for(let i = 1;i < command.usage.length;i++) {
