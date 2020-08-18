@@ -5,7 +5,7 @@ const streams = [ fs.createWriteStream(__dirname+'/../logs/latest.log', { flags:
 const logger = getLogger("Help Module", streams);
 
 function buildModuleList(perms) {
-  let modules = [];
+  var modules = [];
 
   logger.info("Building module list...");
   modules.push("general");
@@ -16,7 +16,7 @@ function buildModuleList(perms) {
 }
 
 function buildCommandList(module) {
-  let commands = [];
+  var commands = [];
 
   logger.info("Verifying the existence of module...");
   if (!fs.existsSync(__dirname+"/../commands/"+module)) {
