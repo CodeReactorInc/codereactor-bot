@@ -118,7 +118,7 @@ exports.run = async (client, message, args, data) => {
   msg = await message.channel.send("You want a description? (yes/no)");
 
   let descbool = await data.modules.fate_creator.collectBool(message.channel, message.author);
-
+  msg.delete();
   if (descbool) {
     msg = await message.channel.send("Provide a description: (Limit 1024 chars)");
     let desc = await data.modules.fate_creator.collectString(1024, message.channel, message.author);

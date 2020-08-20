@@ -26,6 +26,7 @@ function yesOrNo(channel, author) {
       if (collected.size === 0) {
         resolve(null);
       } else {
+        collected.first().delete();
         resolve(collected.first().content === "yes");
       }
     });
@@ -47,7 +48,7 @@ async function collectAspects(channel, author) {
 }
 
 async function allocate(channel, author, cache, call) {
-  channel.send(
+  let msg = await channel.send(
     "1. Allocate\n"+
     "2. Deallocate\n"+
     "3. Done"
@@ -58,16 +59,24 @@ async function allocate(channel, author, cache, call) {
   });
   collector.on("end", (collected) => {
     if (collected.size === 0) {
+      msg.delete();
+      collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
+          msg.delete();
+          collected.first().delete();
           selector(channel, author, cache, 0, call);
           break;
         case "2":
+          msg.delete();
+          collected.first().delete();
           selector(channel, author, cache, 1, call);
           break;
-        case "3": 
+        case "3":
+          msg.delete();
+          collected.first().delete();
           if (cache.agile === null) call(null);
           if (cache.careful === null) call(null);
           if (cache.smart === null) call(null);
@@ -82,13 +91,13 @@ async function allocate(channel, author, cache, call) {
 } 
 
 function selector(channel, author, cache, mode, call) {
-  channel.send(
-    "1. Agility\n"+
-    "2. Careful\n"+
-    "3. Smart\n"+
-    "4. Stylish\n"+
-    "5. Power\n"+
-    "6. Sneaky\n"+
+  let msg = await channel.send(
+    "1. Agility ("+allocated("agile", cache)+")\n"+
+    "2. Careful ("+allocated("careful", cache)+")\n"+
+    "3. Smart ("+allocated("smart", cache)+")\n"+
+    "4. Stylish ("+allocated("stylish", cache)+")\n"+
+    "5. Power ("+allocated("power", cache)+")\n"+
+    "6. Sneaky ("+allocated("sneaky", cache)+")\n"+
     "7. Done"
   );
   let collector = new Discord.MessageCollector(channel, (m) => (m.content === "1" || m.content === "2" || m.content === "3" || m.content === "4" || m.content === "5" || m.content === "6" || m.content === "7") && m.author.id === author.id, {
@@ -97,10 +106,14 @@ function selector(channel, author, cache, mode, call) {
   });
   collector.on("end", (collected) => {
     if (collected.size === 0) {
+      msg.delete();
+      collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "agile", cache, call);
           } else {
@@ -108,6 +121,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "2":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "careful", cache, call);
           } else {
@@ -115,6 +130,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "3":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "smart", cache, call);
           } else {
@@ -122,6 +139,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "4":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "stylish", cache, call);
           } else {
@@ -129,6 +148,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "5":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "power", cache, call);
           } else {
@@ -136,6 +157,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "6":
+          msg.delete();
+          collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "sneaky", cache, call);
           } else {
@@ -143,6 +166,8 @@ function selector(channel, author, cache, mode, call) {
           }
           break;
         case "7":
+          msg.delete();
+          collected.first().delete();
           allocate(channel, author, cache, call);
           break;
       }
@@ -151,11 +176,11 @@ function selector(channel, author, cache, mode, call) {
 }
 
 function allocator(channel, author, stat, cache, call) {
-  channel.send(
-    "1. 0 ("+count("0", cache)+")\n"+
-    "2. 1 ("+count("1", cache)+")\n"+
-    "3. 2 ("+count("2", cache)+")\n"+
-    "4. 3 ("+count("3", cache)+")\n"
+  let msg = await channel.send(
+    "1. +0 ("+count("0", cache)+")\n"+
+    "2. +1 ("+count("1", cache)+")\n"+
+    "3. +2 ("+count("2", cache)+")\n"+
+    "4. +3 ("+count("3", cache)+")\n"
   );
   let collector = new Discord.MessageCollector(channel, (m) => (m.content === "1" || m.content === "2" || m.content === "3" || m.content === "4") && m.author.id === author.id, {
     time: 30000,
@@ -163,38 +188,52 @@ function allocator(channel, author, stat, cache, call) {
   });
   collector.on("end", (collected) => {
     if (collected.size === 0) {
+      msg.delete();
+      collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
+          msg.delete();
+          collected.first().delete();
           if (!cache.free.includes("0")) {
             channel.send("Aspect value aren't free");
           } else {
             cache[stat] = 0;
+            cache.free.splice(cache.free.indexOf("0"), 1);
           }
           selector(channel, author, cache, 0, call);
           break;
         case "2":
+          msg.delete();
+          collected.first().delete();
           if (!cache.free.includes("1")) {
             channel.send("Aspect value aren't free");
           } else {
             cache[stat] = 1;
+            cache.free.splice(cache.free.indexOf("1"), 1);
           }
           selector(channel, author, cache, 0, call);
           break;
         case "3":
+          msg.delete();
+          collected.first().delete();
           if (!cache.free.includes("2")) {
             channel.send("Aspect aren't free");
           } else {
             cache[stat] = 2;
+            cache.free.splice(cache.free.indexOf("2"), 1);
           }
           selector(channel, author, cache, 0, call);
           break;
         case "4":
+          msg.delete();
+          collected.first().delete();
           if (!cache.free.includes("3")) {
             channel.send("Aspect aren't free");
           } else {
             cache[stat] = 3;
+            cache.free.splice(cache.free.indexOf("3"), 1);
           }
           selector(channel, author, cache, 0, call);
           break;
@@ -242,6 +281,27 @@ function count(num, cache) {
     if (cache.free[i] === num) result++;
   }
   return result;
+}
+
+function allocated(stat, cache) {
+  let value = cache[stat];
+  switch(value) {
+    case 0:
+      return "+0";
+      break;
+    case 1:
+      return "+1";
+      break;
+    case 2:
+      return "+2";
+      break;
+    case 3:
+      return "+3";
+      break;
+    case null:
+      return "Not alloc";
+      break
+  }
 }
 
 module.exports = {
