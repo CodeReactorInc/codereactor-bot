@@ -18,7 +18,7 @@ function collectString(size, channel, author) {
 
 function yesOrNo(channel) {
   return new Promise(async (resolve) => {
-    let collector = new Discord.MessageCollector(channel, (m) => (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no") && m.content.length < size && m.author.id === author.id, {
+    let collector = new Discord.MessageCollector(channel, (m) => (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no") && m.author.id === author.id, {
       time: 30000,
       max: 1
     });
