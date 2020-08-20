@@ -45,7 +45,7 @@ function hasLogger(name) {
     
 function toString(object) {
     if (object instanceof Error) {
-        return object.name + " - " + object.message;
+        return object.name + " - " + object.message + "\n" + e.stack;
     } else if (typeof object === "object") {
         return object.toString();
     } else if (typeof object === "string") {
