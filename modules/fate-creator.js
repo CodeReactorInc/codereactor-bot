@@ -90,7 +90,7 @@ async function allocate(channel, author, cache, call) {
   });
 } 
 
-function selector(channel, author, cache, mode, call) {
+async function selector(channel, author, cache, mode, call) {
   let msg = await channel.send(
     "1. Agility ("+allocated("agile", cache)+")\n"+
     "2. Careful ("+allocated("careful", cache)+")\n"+
@@ -175,7 +175,7 @@ function selector(channel, author, cache, mode, call) {
   });
 }
 
-function allocator(channel, author, stat, cache, call) {
+async function allocator(channel, author, stat, cache, call) {
   let msg = await channel.send(
     "1. +0 ("+count("0", cache)+")\n"+
     "2. +1 ("+count("1", cache)+")\n"+
@@ -242,7 +242,7 @@ function allocator(channel, author, stat, cache, call) {
   });
 }
 
-function deallocator(channel, author, stat, cache, call) {
+async function deallocator(channel, author, stat, cache, call) {
   let value = cache[stat];
   switch(value) {
     case 0:
