@@ -4,6 +4,8 @@ const streams = [ fs.createWriteStream(__dirname+'/logs/latest.log', { flags: 'a
 
 const main_logger = getLogger("Discord Bot", streams);
 
+const cache = new Map();
+
 main_logger.info("Importing modules...");
 const Discord = require('discord.js');
 const DatabaseDriver = require('./libs/database-driver.js');
@@ -62,9 +64,11 @@ client.on('message', async (message) => {
         setter: module_loader('config-setter'),
         getter: module_loader('config-getter')
       },
+      fate_creator: module_loader('fate-creator'), 
       id_parser: module_loader('id-parser'),
       help: module_loader('help-module')
-    }
+    },
+    cache: cache
   };
   
   let cmd_logger = getLogger("Command Executor", streams);

@@ -67,7 +67,7 @@ exports.run = async (client, message, args, data) => {
 
       case "prefix":
         data.logger.info("Testing prefix if is valid...");
-        if (/^[a-zA-B0-9!%&*(){}[\]^~;:\\|/?.,'"`´=+-_]+$/.test(args[0]) && args[0].length <= 5) {
+        if (/^[a-zA-Z0-9!%&*(){}[\]^~;:\\|/?.,'"`´=+-_]+$/.test(args[0]) && args[0].length <= 5) {
           data.logger.info("Prefix verified!");
 
           data.logger.info("Sending query...");
