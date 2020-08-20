@@ -5,8 +5,13 @@ const streams = [ fs.createWriteStream('./logs/latest.log', { flags: 'a' }), pro
 const logger = getLogger("Module Loader", streams);
 
 module.exports = (module) => {
-  logger.info("Deleting cache...")
-  delete require.cache[require.resolve(__dirname+'/../modules/'+module+'.js')];
-  logger.info("Loading module...");
-  return require(__dirname+'/../modules/'+module+'.js');
+  try {
+    logger.info("Deleting cache...");
+    delete require.cache[require.resolve(__dirname+'/../modules/'+module+'.js')];
+    logger.info("Loading module...");
+    return require(__dirname+'/../modules/'+module+'.js');
+  } catch (e) {
+    logger.error(e);
+    return null;
+  }
 };
