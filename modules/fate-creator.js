@@ -125,7 +125,7 @@ function selector(channel, author, cache, mode, call) {
           if (mode === 0) {
             allocator(channel, author, "stylish", cache, call);
           } else {
-            await deallocator(channel, author, "stylish", cache, call);
+            deallocator(channel, author, "stylish", cache, call);
           }
           break;
         case "5":
