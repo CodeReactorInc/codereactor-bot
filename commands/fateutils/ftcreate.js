@@ -8,7 +8,7 @@ exports.run = async (client, message, args, data) => {
   }
 
   let locked = data.cache.get("ftlock-"+message.guild.id+"-"+message.author.id);
-  if (locked) {
+  if (!locked) {
     message.channel.send("You already running the creator");
     return;
   }
@@ -28,7 +28,7 @@ exports.run = async (client, message, args, data) => {
       free3: null
     },
     stats: null
-  }
+  };
 
   var msg = await message.channel.send("Starting fate card creator...");
   msg = await msg.edit("Type the name of the caracter: (Limit 32 chars)");

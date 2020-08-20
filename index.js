@@ -80,8 +80,11 @@ client.on('message', async (message) => {
       cmd_logger.warn("Command not found: '"+cmd+"'");
       return;
     }
-    cmd_logger.info("Deleting cache...");
-    delete require.cache[require.resolve(cmd_path)];
+
+    if (!cache.get("ftlock-"+message.guild.id+"-"+message.author.id)) {
+      cmd_logger.info("Deleting cache...");
+      delete require.cache[require.resolve(cmd_path)];
+    }
     
     cmd_logger.info("Loading file...");
     let cmd_file = require(cmd_path);
