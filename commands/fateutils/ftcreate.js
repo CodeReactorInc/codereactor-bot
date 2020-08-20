@@ -1,8 +1,8 @@
 exports.run = async (client, message, args, data) => {
   data.logger.info("Verifying if user only has a fate card...");
-  let card = await data.database.query("SELECT * FROM discordbot.fate_data WHERE user_id = ? AND guild_id = ?", [message.author.id, message.guild.id]);
+  let cardold = await data.database.query("SELECT * FROM discordbot.fate_data WHERE user_id = ? AND guild_id = ?", [message.author.id, message.guild.id]);
 
-  if (card.length > 0) {
+  if (cardold.length > 0) {
     message.channel.send("You already has a fate card");
     return;
   }
