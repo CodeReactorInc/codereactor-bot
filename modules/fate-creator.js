@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 function collectString(size, channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => m.content.length < size && m.author.id === author.id, {
-      time: 30000,
+      time: 120000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -19,7 +19,7 @@ function collectString(size, channel, author) {
 function yesOrNo(channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no") && m.author.id === author.id, {
-      time: 30000,
+      time: 120000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -59,23 +59,23 @@ async function allocate(channel, author, cache, call) {
   });
   collector.on("end", (collected) => {
     if (collected.size === 0) {
-      msg.delete();
+      await msg.delete();
       collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           selector(channel, author, cache, 0, call);
           break;
         case "2":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           selector(channel, author, cache, 1, call);
           break;
         case "3":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (cache.agile === null) call(null);
           if (cache.careful === null) call(null);
@@ -106,13 +106,13 @@ async function selector(channel, author, cache, mode, call) {
   });
   collector.on("end", (collected) => {
     if (collected.size === 0) {
-      msg.delete();
+      await msg.delete();
       collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "agile", cache, call);
@@ -121,7 +121,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "2":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "careful", cache, call);
@@ -130,7 +130,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "3":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "smart", cache, call);
@@ -139,7 +139,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "4":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "stylish", cache, call);
@@ -148,7 +148,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "5":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "power", cache, call);
@@ -157,7 +157,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "6":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (mode === 0) {
             allocator(channel, author, "sneaky", cache, call);
@@ -166,7 +166,7 @@ async function selector(channel, author, cache, mode, call) {
           }
           break;
         case "7":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           allocate(channel, author, cache, call);
           break;
@@ -186,18 +186,19 @@ async function allocator(channel, author, stat, cache, call) {
     time: 30000,
     max: 1
   });
-  collector.on("end", (collected) => {
+  collector.on("end", async (collected) => {
     if (collected.size === 0) {
-      msg.delete();
+      await msg.delete();
       collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
         case "1":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("0")) {
-            channel.send("Aspect value aren't free");
+            let del = await channel.send("Aspect aren't free");
+            setTimeout(del.delete, 3000);
           } else {
             cache[stat] = 0;
             cache.free.splice(cache.free.indexOf("0"), 1);
@@ -205,10 +206,11 @@ async function allocator(channel, author, stat, cache, call) {
           selector(channel, author, cache, 0, call);
           break;
         case "2":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("1")) {
-            channel.send("Aspect value aren't free");
+            let del = await channel.send("Aspect aren't free");
+            setTimeout(del.delete, 3000);
           } else {
             cache[stat] = 1;
             cache.free.splice(cache.free.indexOf("1"), 1);
@@ -216,10 +218,11 @@ async function allocator(channel, author, stat, cache, call) {
           selector(channel, author, cache, 0, call);
           break;
         case "3":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("2")) {
-            channel.send("Aspect aren't free");
+            let del = await channel.send("Aspect aren't free");
+            setTimeout(del.delete, 3000);
           } else {
             cache[stat] = 2;
             cache.free.splice(cache.free.indexOf("2"), 1);
@@ -227,10 +230,11 @@ async function allocator(channel, author, stat, cache, call) {
           selector(channel, author, cache, 0, call);
           break;
         case "4":
-          msg.delete();
+          await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("3")) {
-            channel.send("Aspect aren't free");
+            let del = await channel.send("Aspect aren't free");
+            setTimeout(del.delete, 3000);
           } else {
             cache[stat] = 3;
             cache.free.splice(cache.free.indexOf("3"), 1);
@@ -248,29 +252,34 @@ async function deallocator(channel, author, stat, cache, call) {
     case 0:
       cache.free.push("0");
       cache[stat] = null;
-      channel.send("Aspect value cleared");
+      let del = await channel.send("Aspect value cleared");
+      setTimeout(del.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case 1:
       cache.free.push("1");
       cache[stat] = null;
-      channel.send("Aspect value cleared");
+      let del = await channel.send("Aspect value cleared");
+      setTimeout(del.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case 2:
       cache.free.push("2");
       cache[stat] = null;
-      channel.send("Aspect value cleared");
+      let del = await channel.send("Aspect value cleared");
+      setTimeout(del.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case 3:
       cache.free.push("3");
       cache[stat] = null;
-      channel.send("Aspect value cleared");
+      let del = await channel.send("Aspect value cleared");
+      setTimeout(del.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case null:
-      channel.send("Aspect value aren't allocated");
+      let del = await channel.send("Aspect value aren't allocated");
+      setTimeout(del.delete, 3000);
       selector(channel, author, cache, 1, call);
   }
 }
@@ -288,19 +297,14 @@ function allocated(stat, cache) {
   switch(value) {
     case 0:
       return "+0";
-      break;
     case 1:
       return "+1";
-      break;
     case 2:
       return "+2";
-      break;
     case 3:
       return "+3";
-      break;
     case null:
       return "Not alloc";
-      break
   }
 }
 

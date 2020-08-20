@@ -6,6 +6,13 @@ exports.run = async (client, message, args, data) => {
     message.channel.send("You already has a fate card");
     return;
   }
+
+  let locked = data.cache.get("ftlock-"+message.guild.id+"-"+message.author.id);
+  if (locked) {
+    message.channel.send("You already running the creator");
+    return;
+  }
+  data.cache.set("ftlock-"+message.guild.id+"-"+message.author.id, true);
   
   data.logger.info("Starting fate card creator...");
 
@@ -30,12 +37,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!name) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.name = name.content;
-  name.delete();
-  msg.delete();
+  await name.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your aspect concept: (Limit 256 chars)");
 
@@ -43,12 +51,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!aspcon) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.aspects.concept = aspcon.content;
-  aspcon.delete();
-  msg.delete();
+  await aspcon.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your aspect problem: (Limit 256 chars)");
 
@@ -56,12 +65,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!aspro) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.aspects.problem = aspro.content;
-  aspro.delete();
-  msg.delete();
+  await aspro.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your aspect free 1: (Limit 256 chars)");
 
@@ -69,12 +79,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!asfre1) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.aspects.free1 = asfre1.content;
-  asfre1.delete();
-  msg.delete();
+  await asfre1.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your aspect free 2: (Limit 256 chars)");
 
@@ -82,12 +93,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!asfre2) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.aspects.free2 = asfre2.content;
-  asfre2.delete();
-  msg.delete();
+  await asfre2.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your aspect free 3: (Limit 256 chars)");
 
@@ -95,12 +107,13 @@ exports.run = async (client, message, args, data) => {
 
   if (!asfre3) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.aspects.free3 = asfre3.content;
-  asfre3.delete();
-  msg.delete();
+  await asfre3.delete();
+  await msg.delete();
 
   msg = await message.channel.send("Type your stunts: (Limit 1024 chars)");
 
@@ -108,41 +121,46 @@ exports.run = async (client, message, args, data) => {
 
   if (!stunts) {
     message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   }
 
   card.stunts = stunts.content;
-  stunts.delete();
-  msg.delete();
+  await stunts.delete();
+  await msg.delete();
 
   msg = await message.channel.send("You want a description? (yes/no)");
 
   let descbool = await data.modules.fate_creator.collectBool(message.channel, message.author);
-  msg.delete();
+  await msg.delete();
   if (descbool) {
     msg = await message.channel.send("Provide a description: (Limit 1024 chars)");
     let desc = await data.modules.fate_creator.collectString(1024, message.channel, message.author);
     if (!desc) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      msg1 = await message.channel.send("Timeout, edit with '"+data.server_config.prefix+"ftedit' your fate card to add a description if you want");
+      setTimeout(msg1.delete, 3000);
     } else {
       card.description = desc.content;
-      desc.delete();
-      msg.delete();
+      await desc.delete();
+      await msg.delete();
     }
   }
 
-  message.channel.send("Starting skills collector...");
+  msg2 = await message.channel.send("Starting skills collector...");
+  setTimeout(msg2.delete, 3000);
   let skills = await data.modules.fate_creator.collectAspects(message.channel, message.author);
 
   if (!skills) {
     message.channel.send("Timeout or invalid skill value, try again using '"+data.server_config.prefix+"ftcreator'");
+    data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
     return;
   } 
 
   card.stats = skills;
   msg = await message.channel.send("Saving values...");
   await data.database.query("INSERT INTO discordbot.fate_data (user_id, guild_id, name, stunts, description, aspect_concept, aspect_problem, aspect_free1, aspect_free2, aspect_free3, agile, careful, smart, stylish, power, sneaky) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [message.author.id, message.guild.id, card.name, card.stunts, card.description, card.aspects.concept, card.aspects.problem, card.aspects.free1, card.aspects.free2, card.aspects.free3, card.stats.agile, card.stats.careful, card.stats.smart, card.stats.stylish, card.stats.power, card.stats.sneaky]);
-  msg.edit("Value saved!");
+  await msg.edit("Value saved!");
+  data.cache.delete("ftlock-"+message.guild.id+"-"+message.author.id);
   data.logger.info("Fate creator has successful finalized and added new values");
 };
 
