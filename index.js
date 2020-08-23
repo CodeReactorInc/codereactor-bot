@@ -61,12 +61,12 @@ client.on('message', async (message) => {
     database: database,
     modules: {
       config: {
-        setter: module_loader('config-setter'),
-        getter: module_loader('config-getter')
+        setter: require('./modules/config-setter.js'),
+        getter: require('./modules/config-getter.js')
       },
-      fate_creator: module_loader('fate-creator'), 
-      id_parser: module_loader('id-parser'),
-      help: module_loader('help-module')
+      fate_creator: require('./modules/fate-creator.js'), 
+      id_parser: require('./modules/id-parser.js'),
+      help: require('./modules/help-module.js')
     },
     cache: cache
   };
@@ -79,11 +79,6 @@ client.on('message', async (message) => {
     if (cmd_path === null) {
       cmd_logger.warn("Command not found: '"+cmd+"'");
       return;
-    }
-
-    if (!cache.get("ftlock-"+message.guild.id+"-"+message.author.id)) {
-      cmd_logger.info("Deleting cache...");
-      delete require.cache[require.resolve(cmd_path)];
     }
     
     cmd_logger.info("Loading file...");
@@ -144,6 +139,20 @@ client.on('ready', () => {
   } else {
     client.user.setPresence({ activity: { name: "Powered by Code Reactor", type: 'PLAYING' }, status: 'online' });
   }
+
+  main_logger.info("Loading cache controller...");
+
+  setInterval(() => {
+    let cache_logger = getLogger("Cache Controller", streams);
+    cache_logger.info("Clearing cache...");
+    cache.forEach((value, key) => {
+      cache_logger.info("Verifying '"+key+"'...");
+      if (value.created + value.lifespan <= Date.now()) {
+        cache_logger.info("Deleted '"+key+"'");
+        cache.delete(key);
+      }
+    });
+  }, 6*60*60*1000);
 });
 
 client.on('guildDelete', async (guild) => {
