@@ -8,7 +8,7 @@
     "url": "https://github.com/CodeReactorInc/codereactor-bot/issues"
   },
   "scripts": {
-    "start": "nodemon --watch ./config.json --watch ./index.js --watch ./init.js --watch ./random.id --watch ./package.json -e js,id,json --watch './libs/*.js' init.js"
+    "start": "nodemon --watch /modules/** --watch ./commands/** --watch ./config.json --watch ./index.js --watch ./init.js --watch ./random.id --watch ./package.json -e js,id,json --watch './libs/*.js' init.js"
   },
   "keywords": [
     "discord",
