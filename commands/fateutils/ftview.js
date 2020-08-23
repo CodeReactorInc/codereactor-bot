@@ -20,7 +20,7 @@ exports.run = async (client, message, args, data) => {
   }
 
  var msg = await message.channel.send("Generating card...");
- let img = data.modules.fate_viewer(fatedata[0]);
+ let img = await data.modules.fate_viewer(fatedata[0]);
  msg = await msg.edit("Sending image...");
  await message.channel.send(new Discord.MessageAttachment(img));
  msg.delete();
