@@ -192,14 +192,12 @@ async function allocator(channel, author, stat, cache, call) {
       collected.first().delete();
       call(null);
     } else {
-      var del;
       switch(collected.first().content) {
         case "1":
           await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("0")) {
-            del = await channel.send("Aspect aren't free");
-            setTimeout(del.delete, 3000);
+            await channel.send("Aspect aren't free");
           } else {
             cache[stat] = 0;
             cache.free.splice(cache.free.indexOf("0"), 1);
@@ -210,8 +208,7 @@ async function allocator(channel, author, stat, cache, call) {
           await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("1")) {
-            del = await channel.send("Aspect aren't free");
-            setTimeout(del.delete, 3000);
+            await channel.send("Aspect aren't free");
           } else {
             cache[stat] = 1;
             cache.free.splice(cache.free.indexOf("1"), 1);
@@ -222,8 +219,7 @@ async function allocator(channel, author, stat, cache, call) {
           await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("2")) {
-            del = await channel.send("Aspect aren't free");
-            setTimeout(del.delete, 3000);
+            await channel.send("Aspect aren't free");
           } else {
             cache[stat] = 2;
             cache.free.splice(cache.free.indexOf("2"), 1);
@@ -234,8 +230,7 @@ async function allocator(channel, author, stat, cache, call) {
           await msg.delete();
           collected.first().delete();
           if (!cache.free.includes("3")) {
-            del = await channel.send("Aspect aren't free");
-            setTimeout(del.delete, 3000);
+            await channel.send("Aspect aren't free");
           } else {
             cache[stat] = 3;
             cache.free.splice(cache.free.indexOf("3"), 1);
@@ -249,37 +244,35 @@ async function allocator(channel, author, stat, cache, call) {
 
 async function deallocator(channel, author, stat, cache, call) {
   let value = cache[stat];
-  var del;
   switch(value) {
     case 0:
       cache.free.push("0");
       cache[stat] = null;
-      del = await channel.send("Aspect value cleared");
+      await channel.send("Aspect value cleared");
       selector(channel, author, cache, 1, call);
       break;
     case 1:
       cache.free.push("1");
       cache[stat] = null;
-      del = await channel.send("Aspect value cleared");
+      await channel.send("Aspect value cleared");
       selector(channel, author, cache, 1, call);
       break;
     case 2:
       cache.free.push("2");
       cache[stat] = null;
-      del = await channel.send("Aspect value cleared");
+      await channel.send("Aspect value cleared");
       selector(channel, author, cache, 1, call);
       break;
     case 3:
       cache.free.push("3");
       cache[stat] = null;
-      del = await channel.send("Aspect value cleared");
+      await channel.send("Aspect value cleared");
       selector(channel, author, cache, 1, call);
       break;
     case null:
-      del = await channel.send("Aspect value aren't allocated");
+      await channel.send("Aspect value aren't allocated");
       selector(channel, author, cache, 1, call);
   }
-  setTimeout(del.delete, 3000);
 }
 
 function count(num, cache) {

@@ -189,10 +189,8 @@ exports.run = async (client, message, args, data) => {
       data.cache.set("ftcreate-"+message.guild.id+"-"+message.author.id, card);
     }
   }
-  if (!card.stats) {
-    var msg2 = await message.channel.send("Starting skills collector...");
-    setTimeout(msg2.delete, 3000);
 
+  if (!card.stats) {
     let skills = await data.modules.fate_creator.collectAspects(message.channel, message.author);
 
     if (!skills) {
