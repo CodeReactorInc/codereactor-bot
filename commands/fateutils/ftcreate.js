@@ -27,7 +27,7 @@ exports.run = async (client, message, args, data) => {
       created: Date.now(),
       lifespan: 24*60*60*1000
     };
-    
+
     data.cache.set("ftcreate-"+message.guild.id+"-"+message.author.id, card);
   }
 
@@ -190,7 +190,7 @@ exports.run = async (client, message, args, data) => {
     }
   }
   if (!card.stats) {
-    msg2 = await message.channel.send("Starting skills collector...");
+    var msg2 = await message.channel.send("Starting skills collector...");
     setTimeout(msg2.delete, 3000);
 
     let skills = await data.modules.fate_creator.collectAspects(message.channel, message.author);
