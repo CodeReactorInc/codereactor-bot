@@ -11,21 +11,25 @@ exports.run = async (client, message, args, data) => {
   
   data.logger.info("Starting fate card creator...");
 
-  if (!card) data.cache.set("ftcreate-"+message.guild.id+"-"+message.author.id, {
-    name: null,
-    description: null,
-    stunts: null,
-    aspects: {
-      concept: null,
-      problem: null,
-      free1: null,
-      free2: null,
-      free3: null
-    },
-    stats: null,
-    created: Date.now(),
-    lifespan: 24*60*60*1000
-  });
+  if (!card) {
+    card = {
+      name: null,
+      description: null,
+      stunts: null,
+      aspects: {
+        concept: null,
+        problem: null,
+        free1: null,
+        free2: null,
+        free3: null
+      },
+      stats: null,
+      created: Date.now(),
+      lifespan: 24*60*60*1000
+    };
+    
+    data.cache.set("ftcreate-"+message.guild.id+"-"+message.author.id, card);
+  }
 
   var msg;
 
