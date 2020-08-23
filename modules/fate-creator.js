@@ -259,27 +259,27 @@ async function deallocator(channel, author, stat, cache, call) {
     case 1:
       cache.free.push("1");
       cache[stat] = null;
-      let del = await channel.send("Aspect value cleared");
-      setTimeout(del.delete, 3000);
+      let del1 = await channel.send("Aspect value cleared");
+      setTimeout(del1.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case 2:
       cache.free.push("2");
       cache[stat] = null;
-      let del = await channel.send("Aspect value cleared");
-      setTimeout(del.delete, 3000);
+      let del2 = await channel.send("Aspect value cleared");
+      setTimeout(del2.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case 3:
       cache.free.push("3");
       cache[stat] = null;
-      let del = await channel.send("Aspect value cleared");
-      setTimeout(del.delete, 3000);
+      let del3 = await channel.send("Aspect value cleared");
+      setTimeout(del3.delete, 3000);
       selector(channel, author, cache, 1, call);
       break;
     case null:
-      let del = await channel.send("Aspect value aren't allocated");
-      setTimeout(del.delete, 3000);
+      let del4 = await channel.send("Aspect value aren't allocated");
+      setTimeout(del4.delete, 3000);
       selector(channel, author, cache, 1, call);
   }
 }
