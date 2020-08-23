@@ -5,8 +5,8 @@ module.exports = async (fatedata) => {
   const canvas = createCanvas(1080, 1620);
   const ctx = canvas.getContext('2d');
   ctx.drawImage((await loadImage(__dirname+'/../bin/ftbackground.png')), 0, 0);
-  ctx.font = '50px dejavusans';
+  ctx.font = '30ppx dejavusans';
   ctx.fillStyle = '#fffff2';
-  ctx.fillText(fatedata.name, 100, 10);
+  ctx.fillText(fatedata.name, 100, 30);
   return canvas.toBuffer();
 };
