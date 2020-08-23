@@ -9,7 +9,6 @@ const cache = new Map();
 main_logger.info("Importing modules...");
 const Discord = require('discord.js');
 const DatabaseDriver = require('./libs/database-driver.js');
-const module_loader = require('./libs/module-loader.js');
 
 main_logger.info("Creating instance of DiscordJS...");
 const client = new Discord.Client();
