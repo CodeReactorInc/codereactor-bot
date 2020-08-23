@@ -92,11 +92,11 @@ async function allocate(channel, author, cache, call) {
 
 async function selector(channel, author, cache, mode, call) {
   let msg = await channel.send(
-    "1. Agility ("+allocated("agile", cache)+")\n"+
+    "1. Quick ("+allocated("agile", cache)+")\n"+
     "2. Careful ("+allocated("careful", cache)+")\n"+
-    "3. Smart ("+allocated("smart", cache)+")\n"+
-    "4. Stylish ("+allocated("stylish", cache)+")\n"+
-    "5. Power ("+allocated("power", cache)+")\n"+
+    "3. Clever ("+allocated("smart", cache)+")\n"+
+    "4. Flashy ("+allocated("stylish", cache)+")\n"+
+    "5. Forceful ("+allocated("power", cache)+")\n"+
     "6. Sneaky ("+allocated("sneaky", cache)+")\n"+
     "7. Done"
   );
