@@ -7,6 +7,6 @@ module.exports = async (fatedata) => {
   ctx.drawImage((await loadImage(__dirname+'/../bin/ftbackground.png')), 0, 0);
   ctx.font = '27px dejavusans';
   ctx.fillStyle = '#fffff2';
-  ctx.fillText(fatedata.name, 88, 120);
+  ctx.fillText(fatedata.name, 88, 150);
   return canvas.toBuffer();
 };
