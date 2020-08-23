@@ -60,7 +60,6 @@ async function allocate(channel, author, cache, call) {
   collector.on("end", async (collected) => {
     if (collected.size === 0) {
       await msg.delete();
-      collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
@@ -107,7 +106,6 @@ async function selector(channel, author, cache, mode, call) {
   collector.on("end", async (collected) => {
     if (collected.size === 0) {
       await msg.delete();
-      collected.first().delete();
       call(null);
     } else {
       switch(collected.first().content) {
