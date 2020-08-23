@@ -63,7 +63,8 @@ client.on('message', async (message) => {
         setter: require('./modules/config-setter.js'),
         getter: require('./modules/config-getter.js')
       },
-      fate_creator: require('./modules/fate-creator.js'), 
+      fate_creator: require('./modules/fate-creator.js'),
+      fate_viewer: require('./modules/fate-viewer.js'),
       id_parser: require('./modules/id-parser.js'),
       help: require('./modules/help-module.js')
     },
