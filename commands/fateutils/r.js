@@ -1,6 +1,8 @@
 let alias = require('./roll.js');
 exports.run = alias.run;
-exports.help = alias.help;
-
-exports.help.usage = ["r [dice]"];
-exports.help.name = "r";
+exports.help = {
+  description: "Roll a dice for you",
+  usage: ["r [dice]"],
+  name: "r",
+  permissions: "everyone"
+};
