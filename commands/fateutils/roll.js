@@ -2,7 +2,7 @@ const { DiceRoll } = require('rpg-dice-roller');
 
 exports.run = async (client, message, args, data) => {
   try {
-    let notation = args.join(' ').replace('f', 'F');
+    let notation = args.join(' ').trim().replace('f', 'F');
     let roller = new DiceRoll(notation);
     message.channel.send(roller.output);
   } catch (e) {
