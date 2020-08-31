@@ -1,4 +1,4 @@
-let alias = require('./roll.js');
+const alias = require('./roll.js');
 exports.run = alias.run;
 exports.help = {
   description: "Roll a dice for you",

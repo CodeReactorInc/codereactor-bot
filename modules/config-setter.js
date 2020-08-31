@@ -87,7 +87,7 @@ exports.guildleave = async (client, message, args, data) => {
     message.channel.send("Value added with successfully!");
 
   } else {
-    var channel = message.guild.channels.resolve(data.modules.id_parser(args.shift()));
+    var channel = message.guild.channels.resolve(data.modules.id_parser(mention));
 
     if (!channel || args.length === 0) {
       data.logger.info("Sending query...");
