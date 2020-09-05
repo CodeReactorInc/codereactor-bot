@@ -1,0 +1,13 @@
+{
+  "ext": "js,id,json",
+  "watch": [
+    "./modules/**",
+    "./commands/**",
+    "./config.json",
+    "./index.js",
+    "./init.js",
+    "./random.id",
+    "./package.json",
+    "./libs/*.js"
+  ]
+}

@@ -26,6 +26,8 @@ if (!fs.existsSync(__dirname+"/config.json")) {
   }, null, 4));
   return;
 }
+
+var shards = null;
 logger.info("Loading config.json...");
 const config = JSON.parse(fs.readFileSync(__dirname+"/config.json"));
 logger.info("Config loaded");
@@ -35,8 +37,18 @@ logger.info("Importing Discord and creating manager...");
 const Discord = require('discord.js');
 const manager = new Discord.ShardingManager('./index.js');
 
-logger.info("Spawning "+config.SHARDS+" shards...")
+logger.info("Spawning "+config.SHARDS+" shards...");
 
-manager.spawn(config.SHARDS);
+(async () => {
+  shards = await manager.spawn(config.SHARDS);
+})();
+
+process.on('exit', (code) => {
+  if (shards !== null) {
+    shards.array().forEach(element => {
+      element.kill();
+    });
+  }
+});
 
 logger.info("All ready");
