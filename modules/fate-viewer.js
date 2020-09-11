@@ -18,13 +18,12 @@ module.exports = async (fatedata) => {
     } else if (ctx.measureText(descLine + char).width > 608) {
       descLines.push(descLine);
       descLine = "";
-    } else if (i === (fatedata.description.length - 1)) {
-      descLines.push(descLine);
-      descLine = "";
     } else {
       descLine += char;
     }
   }
+  descLines.push(descLine);
+  descLine = "";
   let lastDescValue = 158;
   for(let i = 0;i < descLines.length;i++) {
     if (ctx.measureText(descLines[i]).height < 136) {
