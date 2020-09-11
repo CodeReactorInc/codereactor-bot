@@ -38,11 +38,9 @@ module.exports = async (fatedata) => {
   let lastDescValue = 158;
   logger.info("Description has "+descLines.length+" lines");
   for(let i = 0;i < descLines.length;i++) {
-    if (ctx.measureText(descLines[i]).height < 136) {
-      logger.info("Setting 'description' in "+84+"x"+lastDescValue);
-      ctx.fillText(descLines[i], 84, lastDescValue);
-      lastDescValue += ctx.measureText(descLines[i]).height;
-    }
+    logger.info("Setting 'description' in "+84+"x"+lastDescValue);
+    ctx.fillText(descLines[i], 84, lastDescValue);
+    lastDescValue += ctx.measureText(descLines[i]).height;
   }
   return canvas.toBuffer();
 };
