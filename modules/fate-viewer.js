@@ -1,6 +1,6 @@
 const { createCanvas, loadImage, registerFont } = require('canvas');
 
-const { getLogger } = require('./libs/logger.js');
+const { getLogger } = require('../libs/logger.js');
 const fs = require('fs');
 const streams = [ fs.createWriteStream(__dirname+'/../logs/latest.log', { flags: 'a' }), process.stdout ];
 
