@@ -8,5 +8,29 @@ module.exports = async (fatedata) => {
   ctx.font = '26px dejavusans';
   ctx.fillStyle = '#fffff2';
   ctx.fillText(fatedata.name, 84, 136);
+  let descLines = [];
+  let descLine = "";
+  for(let i = 0;i < fatedata.description.length;i++) {
+    let char = fatedata.description[i];
+    if (char === "\n") {
+      descLines.push(descLine);
+      descLine = "";
+    } else if (ctx.measureText(descLine + char).width > 608) {
+      descLines.push(descLine);
+      descLine = "";
+    } else if (i === (fatedata.description.length - 1)) {
+      descLines.push(descLine);
+      descLine = "";
+    } else {
+      descLine += char;
+    }
+  }
+  let lastDescValue = 158;
+  for(let i = 0;i < descLines.length;i++) {
+    if (ctx.measureText(descLines[i]).height < 136) {
+      ctx.fillText(descLines[i], 84, lastDescValue);
+      lastDescValue += ctx.measureText(descLines[i]).height;
+    }
+  }
   return canvas.toBuffer();
 };
