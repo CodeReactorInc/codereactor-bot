@@ -8,6 +8,5 @@ module.exports = async (fatedata) => {
   ctx.font = '26px dejavusans';
   ctx.fillStyle = '#fffff2';
   ctx.fillText(fatedata.name, 86, 138);
-  ctx.fillStyle(fatedata)
   return canvas.toBuffer();
 };
