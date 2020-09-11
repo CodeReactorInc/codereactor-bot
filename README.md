@@ -60,7 +60,7 @@ Use ``npm start`` to run nodemon with correct arguments
 - guild_id VARCHAR(20) NOT NULL
 - name VARCHAR(32) NOT NULL
 - stunts VARCHAR(256) NOT NULL
-- description VARCHAR(1024) DEFAULT ''
+- description VARCHAR(160) DEFAULT ''
 - recharge TINYINT(3) UNSIGNED DEFAULT 3
 - destiny_points TINYINT(3) UNSIGNED ZEROFILL DEFAULT 3
 - aspect_concept VARCHAR(256) NOT NULL
