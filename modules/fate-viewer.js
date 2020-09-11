@@ -37,10 +37,10 @@ module.exports = async (fatedata) => {
   descLine = "";
   var lastDescValue = 187;
   logger.info("Description has "+descLines.length+" lines");
-  for(let i = 0;i < descLines.length;i++) {
+  for(let i = 0;i < descLines.length && i < 7;i++) {
     logger.info("Setting 'description' in "+84+"x"+lastDescValue);
     ctx.fillText(descLines[i], 84, lastDescValue);
-    lastDescValue += 20;
+    lastDescValue += 25;
   }
   return canvas.toBuffer();
 };
