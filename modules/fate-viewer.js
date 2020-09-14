@@ -19,8 +19,8 @@ module.exports = async (fatedata) => {
   ctx.fillStyle = '#fffff2';
   logger.info("Setting 'name' in "+84+"x"+136);
   ctx.fillText(fatedata.name, 84, 136);
-  let descLines = [];
-  let descLine = "";
+  var descLines = [];
+  var descLine = "";
   for(let i = 0;i < fatedata.description.length;i++) {
     let char = fatedata.description[i];
     if (char === "\n") {
