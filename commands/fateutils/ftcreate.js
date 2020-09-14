@@ -165,8 +165,8 @@ exports.run = async (client, message, args, data) => {
     let descbool = await data.modules.fate_creator.collectBool(message.channel, message.author);
     await msg.delete();
     if (descbool) {
-      msg = await message.channel.send("Provide a description: (Limit 160 chars)");
-      let desc = await data.modules.fate_creator.collectString(160, message.channel, message.author);
+      msg = await message.channel.send("Provide a description: (Limit 165 chars)");
+      let desc = await data.modules.fate_creator.collectString(165, message.channel, message.author);
       if (!desc) {
         msg1 = await message.channel.send("Timeout, edit with '"+data.server_config.prefix+"ftedit' your fate card to add a description if you want");
 
