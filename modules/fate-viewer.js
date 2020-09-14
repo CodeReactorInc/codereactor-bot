@@ -38,7 +38,6 @@ module.exports = async (fatedata) => {
   let lastDescValue = 190;
   logger.info("Description has "+descLines.length+" lines");
   for(let i = 0;i < descLines.length && i < 5;i++) {
-    size += descLines[i].length;
     logger.info("Setting 'description' in "+84+"x"+lastDescValue);
     ctx.fillText(descLines[i], 84, lastDescValue);
     lastDescValue += 25;
