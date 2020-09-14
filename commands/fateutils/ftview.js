@@ -18,12 +18,16 @@ exports.run = async (client, message, args, data) => {
     message.channel.send("User doesn't have a card registered");
     return;
   }
-
- var msg = await message.channel.send("Generating card...");
- let img = await data.modules.fate_viewer(fatedata[0]);
- msg = await msg.edit("Sending image...");
- await message.channel.send(new Discord.MessageAttachment(img));
- msg.delete();
+  try {
+    var msg = await message.channel.send("Generating card...");
+    let img = await data.modules.fate_viewer(fatedata[0]);
+    msg = await msg.edit("Sending image...");
+    await message.channel.send(new Discord.MessageAttachment(img));
+    msg.delete();
+  } catch (e) {
+    message.channel.send(e.name+": "+e.message);
+    data.logger.warn(e);
+  }
 };
 
 exports.help = {
