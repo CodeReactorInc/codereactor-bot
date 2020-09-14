@@ -47,6 +47,6 @@ module.exports = async (fatedata) => {
   ctx.font = '60px dejavusans-bold';
   ctx.fillText("+"+fatedata.recharge, 740, 265);
   logger.info("Setting 'destiny_points' in "+870+"x"+265);
-  ctx.fillText(fatedata.destiny_points, 870, 265);
+  ctx.fillText(fatedata.destiny_points, 920, 265);
   return canvas.toBuffer();
 };
