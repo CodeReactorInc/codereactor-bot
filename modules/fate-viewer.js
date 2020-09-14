@@ -7,6 +7,7 @@ const streams = [ fs.createWriteStream(__dirname+'/../logs/latest.log', { flags:
 const logger = getLogger("Fate Viewer", streams);
 
 registerFont(__dirname+"/../bin/DejaVuSans.ttf", { family: 'dejavusans'});
+registerFont(__dirname+"/../bin/DejaVuSans-Bold.ttf", { family: 'dejavusans-bold'});
 module.exports = async (fatedata) => {
   logger.info("Creating canvas with 1080x1620...");
   const canvas = createCanvas(1080, 1620);
@@ -43,9 +44,9 @@ module.exports = async (fatedata) => {
     lastDescValue += 25;
   }
   logger.info("Setting 'recharge' in "+740+"x"+265);
-  ctx.font = '60px dejavusans';
+  ctx.font = '60px dejavusans-bold';
   ctx.fillText("+"+fatedata.recharge, 740, 265);
-  logger.info("Setting 'destiny_points' in "+840+"x"+265);
-  ctx.fillText("+"+fatedata.destiny_points, 840, 265);
+  logger.info("Setting 'destiny_points' in "+870+"x"+265);
+  ctx.fillText(fatedata.destiny_points, 870, 265);
   return canvas.toBuffer();
 };
