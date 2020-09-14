@@ -42,8 +42,8 @@ module.exports = async (fatedata) => {
     ctx.fillText(descLines[i], 84, lastDescValue);
     lastDescValue += 25;
   }
-  logger.info("Setting 'recharge' in "+830+"x"+260);
+  logger.info("Setting 'recharge' in "+800+"x"+265);
   ctx.font = '60px dejavusans';
-  ctx.fillText("+"+fatedata.recharge, 830, 260);
+  ctx.fillText("+"+fatedata.recharge, 800, 265);
   return canvas.toBuffer();
 };
