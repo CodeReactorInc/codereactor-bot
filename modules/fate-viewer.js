@@ -49,5 +49,8 @@ module.exports = async (fatedata) => {
   let dpwidth = (943 + 21) - ((ctx.measureText(fatedata.destiny_points).width / 42)  * 21);
   logger.info("Setting 'destiny_points' in "+dpwidth+"x"+265);
   ctx.fillText(fatedata.destiny_points, dpwidth, 265);
+  ctx.font = '26px dejavusans';
+  logger.info("Setting 'agile' in "+950+"x"+404);
+  ctx.fillText("+"+fatedata.agile, 950, 404);
   return canvas.toBuffer();
 };
