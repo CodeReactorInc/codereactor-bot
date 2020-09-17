@@ -52,8 +52,8 @@ module.exports = async (fatedata) => {
   ctx.font = '38px dejavusans-bold';
   logger.info("Setting 'agile' in "+915+"x"+412);
   ctx.fillText("+"+fatedata.agile, 915, 412);
-  logger.info("Setting 'careful' in "+915+"x"+467);
-  ctx.fillText("+"+fatedata.careful, 915, 467);
+  logger.info("Setting 'careful' in "+915+"x"+469);
+  ctx.fillText("+"+fatedata.careful, 915, 469);
   logger.info("Setting 'smart' in "+915+"x"+544);
   ctx.fillText("+"+fatedata.smart, 915, 544);
   logger.info("Setting 'stylish' in "+915+"x"+610);
