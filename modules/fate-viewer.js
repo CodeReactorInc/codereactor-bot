@@ -50,7 +50,7 @@ module.exports = async (fatedata) => {
   logger.info("Setting 'destiny_points' in "+dpwidth+"x"+265);
   ctx.fillText(fatedata.destiny_points, dpwidth, 265);
   ctx.font = '38px dejavusans-bold';
-  logger.info("Setting 'agile' in "+925+"x"+413);
-  ctx.fillText("+"+fatedata.agile, 925, 413);
+  logger.info("Setting 'agile' in "+920+"x"+412);
+  ctx.fillText("+"+fatedata.agile, 920, 412);
   return canvas.toBuffer();
 };
