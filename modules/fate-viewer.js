@@ -56,11 +56,11 @@ module.exports = async (fatedata) => {
   ctx.fillText("+"+fatedata.careful, 915, 469);
   logger.info("Setting 'smart' in "+915+"x"+526);
   ctx.fillText("+"+fatedata.smart, 915, 526);
-  logger.info("Setting 'stylish' in "+915+"x"+583);
-  ctx.fillText("+"+fatedata.stylish, 915, 583);
-  logger.info("Setting 'power' in "+915+"x"+640);
-  ctx.fillText("+"+fatedata.power, 915, 640);
-  logger.info("Setting 'sneaky' in "+915+"x"+697);
-  ctx.fillText("+"+fatedata.sneaky, 915, 697);
+  logger.info("Setting 'stylish' in "+915+"x"+581);
+  ctx.fillText("+"+fatedata.stylish, 915, 581);
+  logger.info("Setting 'power' in "+915+"x"+637);
+  ctx.fillText("+"+fatedata.power, 915, 637);
+  logger.info("Setting 'sneaky' in "+915+"x"+694);
+  ctx.fillText("+"+fatedata.sneaky, 915, 694);
   return canvas.toBuffer();
 };
