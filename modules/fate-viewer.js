@@ -76,11 +76,11 @@ module.exports = async (fatedata) => {
   ctx.fillText(fatedata.aspect_concept, 91, 414);
   logger.info("Setting 'aspect_problem' in "+91+"x"+481);
   ctx.fillText(fatedata.aspect_problem, 91, 481);
-  logger.info("Setting 'aspect_free1' in "+91+"x"+544);
-  ctx.fillText(fatedata.aspect_free1, 91, 544);
+  logger.info("Setting 'aspect_free1' in "+91+"x"+546);
+  ctx.fillText(fatedata.aspect_free1, 91, 546);
   logger.info("Setting 'aspect_free2' in "+91+"x"+613);
   ctx.fillText(fatedata.aspect_free2, 91, 613);
-  logger.info("Setting 'aspect_free3' in "+94+"x"+680);
-  ctx.fillText(fatedata.aspect_free3, 91, 680);
+  logger.info("Setting 'aspect_free3' in "+94+"x"+681);
+  ctx.fillText(fatedata.aspect_free3, 91, 681);
   return canvas.toBuffer();
 };
