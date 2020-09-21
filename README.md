@@ -63,11 +63,11 @@ Use ``npm start`` to run nodemon with correct arguments
 - description VARCHAR(165) DEFAULT ''
 - recharge TINYINT(3) UNSIGNED DEFAULT 3
 - destiny_points TINYINT(3) UNSIGNED ZEROFILL DEFAULT 3
-- aspect_concept VARCHAR(256) NOT NULL
-- aspect_problem VARCHAR(256) NOT NULL
-- aspect_free1 VARCHAR(256) NOT NULL
-- aspect_free2 VARCHAR(256) NOT NULL
-- aspect_free3 VARCHAR(256) NOT NULL
+- aspect_concept VARCHAR(28) NOT NULL
+- aspect_problem VARCHAR(28) NOT NULL
+- aspect_free1 VARCHAR(28) NOT NULL
+- aspect_free2 VARCHAR(28) NOT NULL
+- aspect_free3 VARCHAR(28) NOT NULL
 - agile TINYINT(3) NOT NULL
 - careful TINYINT(3) NOT NULL
 - smart TINYINT(3) NOT NULL

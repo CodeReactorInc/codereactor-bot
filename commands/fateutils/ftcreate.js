@@ -52,9 +52,9 @@ exports.run = async (client, message, args, data) => {
   }
 
   if (!card.aspects.concept) {
-    msg = await message.channel.send("Type your aspect concept: (Limit 256 chars)");
+    msg = await message.channel.send("Type your aspect concept: (Limit 28 chars)");
 
-    let aspcon = await data.modules.fate_creator.collectString(256, message.channel, message.author);
+    let aspcon = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!aspcon) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
@@ -70,9 +70,9 @@ exports.run = async (client, message, args, data) => {
   }
 
   if (!card.aspects.problem) {
-    msg = await message.channel.send("Type your aspect problem: (Limit 256 chars)");
+    msg = await message.channel.send("Type your aspect problem: (Limit 28 chars)");
 
-    let aspro = await data.modules.fate_creator.collectString(256, message.channel, message.author);
+    let aspro = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!aspro) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
@@ -88,9 +88,9 @@ exports.run = async (client, message, args, data) => {
   }
 
   if (!card.aspects.free1) {
-    msg = await message.channel.send("Type your aspect free 1: (Limit 256 chars)");
+    msg = await message.channel.send("Type your aspect free 1: (Limit 28 chars)");
 
-    let asfre1 = await data.modules.fate_creator.collectString(256, message.channel, message.author);
+    let asfre1 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre1) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
@@ -106,9 +106,9 @@ exports.run = async (client, message, args, data) => {
   }
 
   if (!card.aspects.free2) {
-    msg = await message.channel.send("Type your aspect free 2: (Limit 256 chars)");
+    msg = await message.channel.send("Type your aspect free 2: (Limit 28 chars)");
 
-    let asfre2 = await data.modules.fate_creator.collectString(256, message.channel, message.author);
+    let asfre2 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre2) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
@@ -124,9 +124,9 @@ exports.run = async (client, message, args, data) => {
   }
 
   if (!card.aspects.free3) {
-    msg = await message.channel.send("Type your aspect free 3: (Limit 256 chars)");
+    msg = await message.channel.send("Type your aspect free 3: (Limit 28 chars)");
 
-    let asfre3 = await data.modules.fate_creator.collectString(256, message.channel, message.author);
+    let asfre3 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre3) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
