@@ -72,7 +72,7 @@ module.exports = async (fatedata) => {
   ctx.fillText("+"+fatedata.sneaky, 915, 694);
 
   ctx.font = '26px dejavusans';
-  logger.info("Setting 'aspect_concept' in "+86+"x"+412);
-  ctx.fillText(fatedata.aspect_concept.slice(0, 28), 86, 412);
+  logger.info("Setting 'aspect_concept' in "+86+"x"+413);
+  ctx.fillText(fatedata.aspect_concept, 86, 413);
   return canvas.toBuffer();
 };
