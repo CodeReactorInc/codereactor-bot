@@ -72,15 +72,15 @@ module.exports = async (fatedata) => {
   ctx.fillText("+"+fatedata.sneaky, 915, 694);
 
   ctx.font = '26px dejavusans';
-  logger.info("Setting 'aspect_concept' in "+91+"x"+414);
-  ctx.fillText(fatedata.aspect_concept, 91, 414);
-  logger.info("Setting 'aspect_problem' in "+91+"x"+481);
-  ctx.fillText(fatedata.aspect_problem, 91, 481);
-  logger.info("Setting 'aspect_free1' in "+91+"x"+546);
-  ctx.fillText(fatedata.aspect_free1, 91, 546);
-  logger.info("Setting 'aspect_free2' in "+91+"x"+613);
-  ctx.fillText(fatedata.aspect_free2, 91, 613);
-  logger.info("Setting 'aspect_free3' in "+94+"x"+681);
-  ctx.fillText(fatedata.aspect_free3, 91, 681);
+  logger.info("Setting 'aspect_concept' in "+90+"x"+414);
+  ctx.fillText(fatedata.aspect_concept, 90, 414);
+  logger.info("Setting 'aspect_problem' in "+90+"x"+481);
+  ctx.fillText(fatedata.aspect_problem, 90, 481);
+  logger.info("Setting 'aspect_free1' in "+90+"x"+546);
+  ctx.fillText(fatedata.aspect_free1, 90, 546);
+  logger.info("Setting 'aspect_free2' in "+90+"x"+613);
+  ctx.fillText(fatedata.aspect_free2, 90, 613);
+  logger.info("Setting 'aspect_free3' in "+90+"x"+681);
+  ctx.fillText(fatedata.aspect_free3, 90, 681);
   return canvas.toBuffer();
 };
