@@ -94,16 +94,16 @@ module.exports = async (fatedata) => {
   logger.info("Processing stress: "+fatedata.stress);
   switch(fatedata.stress) {
     case 1:
-      logger.info("Setting 'stress'-1 in "+122+"x"+1453);
-      ctx.fillText("X", 122, 1453);
+      logger.info("Setting 'stress'-1 in "+102+"x"+1463);
+      ctx.fillText("X", 102, 1463);
       break;
     case 2:
-      logger.info("Setting 'stress'-2 in "+269+"x"+1453);
-      ctx.fillText("X", 269, 1453);
+      logger.info("Setting 'stress'-2 in "+269+"x"+1463);
+      ctx.fillText("X", 269, 1463);
       break;
     case 3:
-      logger.info("Setting 'stress'-3 in "+404+"x"+1453);
-      ctx.fillText("X", 404, 1453);
+      logger.info("Setting 'stress'-3 in "+404+"x"+1463);
+      ctx.fillText("X", 404, 1463);
       break;
   }
   return canvas.toBuffer();
