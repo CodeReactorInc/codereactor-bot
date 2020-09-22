@@ -83,11 +83,11 @@ module.exports = async (fatedata) => {
   logger.info("Setting 'aspect_free3' in "+90+"x"+681);
   ctx.fillText(fatedata.aspect_free3, 90, 681);
 
-  logger.info("Setting 'consequence_smooth' in "+523+"x"+1429);
-  ctx.fillText(fatedata.consequence_smooth.slice(0, 25), 523, 1429);
-  logger.info("Setting 'consequence_moderate' in "+523+"x"+1496);
-  ctx.fillText(fatedata.consequence_moderate, 523, 1496);
-  logger.info("Setting 'consequence_heavy' in "+523+"x"+1562);
-  ctx.fillText(fatedata.consequence_heavy, 523, 1562);
+  logger.info("Setting 'consequence_smooth' in "+522+"x"+1429);
+  ctx.fillText(fatedata.consequence_smooth, 522, 1429);
+  logger.info("Setting 'consequence_moderate' in "+522+"x"+1496);
+  ctx.fillText(fatedata.consequence_moderate, 522, 1496);
+  logger.info("Setting 'consequence_heavy' in "+522+"x"+1562);
+  ctx.fillText(fatedata.consequence_heavy, 522, 1562);
   return canvas.toBuffer();
 };
