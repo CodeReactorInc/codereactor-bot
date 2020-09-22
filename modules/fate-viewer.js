@@ -90,7 +90,7 @@ module.exports = async (fatedata) => {
   logger.info("Setting 'consequence_heavy' in "+522+"x"+1562);
   ctx.fillText(fatedata.consequence_heavy, 522, 1562);
 
-  ctx.font = '38px dejavusans-bold';
+  ctx.font = '50px dejavusans-bold';
   logger.info("Processing stress: "+fatedata.stress);
   switch(fatedata.stress) {
     case 1:
