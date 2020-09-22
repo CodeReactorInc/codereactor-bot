@@ -74,9 +74,9 @@ Use ``npm start`` to run nodemon with correct arguments
 - stylish TINYINT(3) NOT NULL
 - sneaky TINYINT(3) NOT NULL
 - stress TINYINT(3) DEFAULT 0
-- consequence_smooth VARCHAR(128) DEFAULT ''
-- consequence_moderate VARCHAR(128) DEFAULT ''
-- consequence_heavy VARCHAR(128) DEFAULT ''
+- consequence_smooth VARCHAR(27) DEFAULT ''
+- consequence_moderate VARCHAR(27) DEFAULT ''
+- consequence_heavy VARCHAR(27) DEFAULT ''
 
 ## License
 
