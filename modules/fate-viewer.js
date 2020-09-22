@@ -90,20 +90,20 @@ module.exports = async (fatedata) => {
   logger.info("Setting 'consequence_heavy' in "+522+"x"+1562);
   ctx.fillText(fatedata.consequence_heavy, 522, 1562);
 
-  ctx.font = '50px dejavusans-bold';
+  ctx.font = '70px dejavusans-bold';
   logger.info("Processing stress: "+fatedata.stress);
   switch(fatedata.stress) {
     case 1:
-      logger.info("Setting 'stress'-1 in "+146+"x"+1442);
-      ctx.fillText("X", 146, 1442);
+      logger.info("Setting 'stress'-1 in "+142+"x"+1447);
+      ctx.fillText("X", 142, 1447);
       break;
     case 2:
-      logger.info("Setting 'stress'-2 in "+269+"x"+1442);
-      ctx.fillText("X", 269, 1442);
+      logger.info("Setting 'stress'-2 in "+269+"x"+1447);
+      ctx.fillText("X", 269, 1447);
       break;
     case 3:
-      logger.info("Setting 'stress'-3 in "+404+"x"+1442);
-      ctx.fillText("X", 404, 1442);
+      logger.info("Setting 'stress'-3 in "+404+"x"+1447);
+      ctx.fillText("X", 404, 1447);
       break;
   }
   return canvas.toBuffer();
