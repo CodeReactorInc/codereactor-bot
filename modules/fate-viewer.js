@@ -102,8 +102,8 @@ module.exports = async (fatedata) => {
       ctx.fillText("X", 239, 1463);
       break;
     case 3:
-      logger.info("Setting 'stress'-3 in "+350+"x"+1463);
-      ctx.fillText("X", 350, 1463);
+      logger.info("Setting 'stress'-3 in "+364+"x"+1463);
+      ctx.fillText("X", 364, 1463);
       break;
   }
   return canvas.toBuffer();
