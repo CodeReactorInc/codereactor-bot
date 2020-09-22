@@ -94,8 +94,8 @@ module.exports = async (fatedata) => {
   logger.info("Processing stress: "+fatedata.stress);
   switch(fatedata.stress) {
     case 1:
-      logger.info("Setting 'stress'-1 in "+106+"x"+1463);
-      ctx.fillText("X", 106, 1463);
+      logger.info("Setting 'stress'-1 in "+109+"x"+1463);
+      ctx.fillText("X", 109, 1463);
       break;
     case 2:
       logger.info("Setting 'stress'-2 in "+269+"x"+1463);
