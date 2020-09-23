@@ -115,7 +115,7 @@ module.exports = async (fatedata) => {
     if (char === "\n") {
       stuntLines.push(stuntLine);
       stuntLine = "";
-    } else if (ctx.measureText(stuntLine + char).width > 951) {
+    } else if (ctx.measureText(stuntLine + char).width > 958) {
       stuntLines.push(stuntLine);
       stuntLine = "";
     } else {
