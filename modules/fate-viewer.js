@@ -106,5 +106,35 @@ module.exports = async (fatedata) => {
       ctx.fillText("X", 369, 1463);
       break;
   }
+
+  ctx.font = '26px dejavusans';
+  let stuntLines = [];
+  let stuntLine = "";
+  for(let i = 0;i < fatedata.stunts.length;i++) {
+    let char = fatedata.stunts[i];
+    if (char === "\n") {
+      stuntLines.push(stuntLine);
+      stuntLine = "";
+    } else if (ctx.measureText(stuntLine + char).width > 948) {
+      stuntLines.push(stuntLine);
+      stuntLine = "";
+    } else {
+      stuntLine += char;
+    }
+  }
+
+  stuntLines.push(stuntLine);
+  stuntLine = "";
+  let lastStuntsValue = 794;
+  let stuntSize = 0;
+
+  logger.info("Stunts has "+stuntLines.length+" lines");
+  for(let i = 0;i < stuntLines.length && i < 100000;i++) {
+    logger.info("Setting 'stunts' in "+84+"x"+lastStuntsValue);
+    ctx.fillText(stuntLines[i], 84, lastStuntsValue);
+    lastStuntsValue += 25;
+    stuntSize += stuntLines[i].length;
+  }
+  logger.info("Stunts char size is: "+stuntSize);
   return canvas.toBuffer();
 };
