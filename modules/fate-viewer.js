@@ -98,8 +98,8 @@ module.exports = async (fatedata) => {
       ctx.fillText("X", 108, 1463);
       break;
     case 2:
-      logger.info("Setting 'stress'-2 in "+239+"x"+1463);
-      ctx.fillText("X", 239, 1463);
+      logger.info("Setting 'stress'-2 in "+241+"x"+1463);
+      ctx.fillText("X", 241, 1463);
       break;
     case 3:
       logger.info("Setting 'stress'-3 in "+369+"x"+1463);
@@ -115,7 +115,7 @@ module.exports = async (fatedata) => {
     if (char === "\n") {
       stuntLines.push(stuntLine);
       stuntLine = "";
-    } else if (ctx.measureText(stuntLine + char).width > 948) {
+    } else if (ctx.measureText(stuntLine + char).width > 951) {
       stuntLines.push(stuntLine);
       stuntLine = "";
     } else {
