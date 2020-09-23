@@ -126,15 +126,12 @@ module.exports = async (fatedata) => {
   stuntLines.push(stuntLine);
   stuntLine = "";
   let lastStuntsValue = 794;
-  let stuntSize = 0;
 
   logger.info("Stunts has "+stuntLines.length+" lines");
   for(let i = 0;i < stuntLines.length && i < 22;i++) {
     logger.info("Setting 'stunts' in "+84+"x"+lastStuntsValue);
     ctx.fillText(stuntLines[i], 84, lastStuntsValue);
     lastStuntsValue += 25;
-    stuntSize += stuntLines[i].length;
   }
-  logger.info("Stunts char size is: "+stuntSize);
   return canvas.toBuffer();
 };
