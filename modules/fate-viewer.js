@@ -129,7 +129,7 @@ module.exports = async (fatedata) => {
   let stuntSize = 0;
 
   logger.info("Stunts has "+stuntLines.length+" lines");
-  for(let i = 0;i < stuntLines.length && i < 100000;i++) {
+  for(let i = 0;i < stuntLines.length && i < 22;i++) {
     logger.info("Setting 'stunts' in "+84+"x"+lastStuntsValue);
     ctx.fillText(stuntLines[i], 84, lastStuntsValue);
     lastStuntsValue += 25;
