@@ -142,9 +142,9 @@ exports.run = async (client, message, args, data) => {
   }
     
   if (!card.stunts) {
-    msg = await message.channel.send("Type your stunts: (Limit 1024 chars)");
+    msg = await message.channel.send("Type your stunts: (Limit 1100 chars)");
 
-    let stunts = await data.modules.fate_creator.collectString(1024, message.channel, message.author);
+    let stunts = await data.modules.fate_creator.collectString(1100, message.channel, message.author);
 
     if (!stunts) {
       message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
