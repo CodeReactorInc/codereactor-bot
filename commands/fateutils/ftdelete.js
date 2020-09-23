@@ -40,7 +40,7 @@ exports.run = async (client, message, args, data) => {
   }
 
   await database.query("DELETE FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [guild.id, user.id]);
-  message.channel.send("Fate card deleted with suce")
+  message.channel.send("Fate card deleted with successful");
 };
 
 exports.help = {
