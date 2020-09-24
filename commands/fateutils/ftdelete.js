@@ -46,7 +46,7 @@ exports.run = async (client, message, args, data) => {
 
   data.logger.info("Checking if user want delete...");
   message.channel.send("You want delete your fate card? (Yes/No)");
-  let deleteft = await data.modules.fate_creator.collectBool(message.channel, message.author);
+  let deleteft = await yesOrNo(message.channel, message.author);
   if (deleteft) {
     data.logger.info("Collecting fate card...");
     let fatedata = await data.database.query("SELECT * FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
@@ -73,3 +73,19 @@ exports.help = {
   name: "ftdelete",
   permissions: "everyone"
 };
+
+function yesOrNo(channel, author) {
+  return new Promise(async (resolve) => {
+    let collector = new Discord.MessageCollector(channel, (m) => (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no") && m.author.id === author.id, {
+      time: 120000,
+      max: 1
+    });
+    collector.on("end", (collected) => {
+      if (collected.size === 0) {
+        resolve(null);
+      } else {
+        resolve(collected.first().content === "yes");
+      }
+    });
+  });
+}
