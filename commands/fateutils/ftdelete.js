@@ -44,19 +44,27 @@ exports.run = async (client, message, args, data) => {
     }
   }
 
-  data.logger.info("Collecting fate card...");
-  let fatedata = await data.database.query("SELECT * FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
+  data.logger.info("Checking if user want delete...");
+  message.channel.send("You want delete your fate card? (Yes/No)");
+  let deleteft = await data.modules.fate_creator.collectBool(message.channel, message.author);
+  if (deleteft) {
+    data.logger.info("Collecting fate card...");
+    let fatedata = await data.database.query("SELECT * FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
 
-  data.logger.info("Verifying fate card size...");
-  if (fatedata.length <= 0) {
-    data.logger.warn("Fate card doesn't exists");
-    message.channel.send("User doesn't have a card registered");
-    return;
+    data.logger.info("Verifying fate card size...");
+    if (fatedata.length <= 0) {
+      data.logger.warn("Fate card doesn't exists");
+      message.channel.send("User doesn't have a card registered");
+      return;
+    }
+
+    data.logger.info("Deleting fate card...");
+    await database.query("DELETE FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
+    message.channel.send("Fate card deleted with successful");
+  } else {
+    data.logger.warn("User don't has accept the confirmation");
+    message.channel.send("Fate card aren't deleted, user has recused");
   }
-
-  data.logger.info("Deleting fate card...");
-  await database.query("DELETE FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [guild.id, user.id]);
-  message.channel.send("Fate card deleted with successful");
 };
 
 exports.help = {
