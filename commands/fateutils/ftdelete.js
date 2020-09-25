@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+
 exports.run = async (client, message, args, data) => {
   var user = message.author;
 
