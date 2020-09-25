@@ -61,7 +61,7 @@ exports.run = async (client, message, args, data) => {
     }
 
     data.logger.info("Deleting fate card...");
-    await database.query("DELETE FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
+    await data.database.query("DELETE FROM discordbot.fate_data WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
     message.channel.send("Fate card deleted with successful");
   } else {
     data.logger.warn("User don't has accept the confirmation");
