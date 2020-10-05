@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 function collectOperation(channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => m.author.id === author.id && (m.content === "0" || m.content === "1" || m.content === "2" || m.content === "3" || m.content === "4" || m.content === "5" || m.content === "6" || m.content === "7" || m.content === "8" || m.content === "9" || m.content === "10" || m.content === "11" || m.content === "12" || m.content === "13" || m.content === "14"), {
-      time: 120000,
+      time: 30000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -19,7 +19,7 @@ function collectOperation(channel, author) {
 function collectString(size, channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => m.content.length < size && m.author.id === author.id, {
-      time: 120000,
+      time: 30000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -35,7 +35,7 @@ function collectString(size, channel, author) {
 function collectInt(channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => !isNaN(parseInt(m.content)) && m.author.id === author.id, {
-      time: 120000,
+      time: 30000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -55,7 +55,7 @@ function collectInt(channel, author) {
 function collectStress(channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => !isNaN(parseInt(m.content)) && m.author.id === author.id, {
-      time: 120000,
+      time: 30000,
       max: 1
     });
     collector.on("end", (collected) => {
@@ -75,7 +75,7 @@ function collectStress(channel, author) {
 function yesOrNo(channel, author) {
   return new Promise(async (resolve) => {
     let collector = new Discord.MessageCollector(channel, (m) => (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no") && m.author.id === author.id, {
-      time: 120000,
+      time: 30000,
       max: 1
     });
     collector.on("end", (collected) => {
