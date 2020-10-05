@@ -59,7 +59,6 @@ function collectStress(channel, author) {
       max: 1
     });
     collector.on("end", (collected) => {
-      console.log(collected.size);
       if (collected.size === 0) {
         resolve(null);
       } else {

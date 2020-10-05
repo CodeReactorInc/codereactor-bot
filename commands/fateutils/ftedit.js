@@ -98,7 +98,7 @@ exports.run = async (client, message, args, data) => {
     case "2":
       await message.channel.send("Type your recharge value: (0-99)");
       let recharge = await data.modules.fate_editor.collectInt(message.channel, message.author);
-      if (!recharge) {
+      if (recharge === null) {
         message.channel.send("User doesn't have provided a valid value");
         return;
       }
@@ -108,7 +108,7 @@ exports.run = async (client, message, args, data) => {
     case "3":
       await message.channel.send("Type your destiny points value: (0-99)");
       let points = await data.modules.fate_editor.collectInt(message.channel, message.author);
-      if (!points) {
+      if (points === null) {
         message.channel.send("User doesn't have provided a valid value");
         return;
       }
@@ -187,7 +187,7 @@ exports.run = async (client, message, args, data) => {
     case "11":
       await message.channel.send("Type your stress: (0-3)");
       let stress = await data.modules.fate_editor.collectStress(message.channel, message.author);
-      if (!stress) {
+      if (stress === null) {
         message.channel.send("User doesn't have provided a value");
         return;
       }
