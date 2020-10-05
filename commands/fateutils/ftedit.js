@@ -71,13 +71,13 @@ exports.run = async (client, message, args, data) => {
     "13 - Moderate consequence\n"+
     "14 - Heavy consequence"
   );
-  let op = await data.fate_editor.collectOperation(message.channel, message.author);
+  let op = await data.modules.fate_editor.collectOperation(message.channel, message.author);
   
   data.logger.info("Processing operation: "+op);
   switch (op) {
     case "0":
       await message.channel.send("Type the name of your character: (Limit 32 chars)");
-      let name = await data.fate_editor.collectString(32, message.channel, message.author);
+      let name = await data.modules.fate_editor.collectString(32, message.channel, message.author);
       if (!name) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -87,7 +87,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "1":
       await message.channel.send("Type your description: (Limit 165 chars)");
-      let desc = await data.fate_editor.collectString(165, message.channel, message.author);
+      let desc = await data.modules.fate_editor.collectString(165, message.channel, message.author);
       if (!desc) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -97,7 +97,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "2":
       await message.channel.send("Type your recharge value: (0-99)");
-      let recharge = await data.fate_editor.collectInt(message.channel, message.author);
+      let recharge = await data.modules.fate_editor.collectInt(message.channel, message.author);
       if (!recharge) {
         message.channel.send("User doesn't have provided a valid value");
         return;
@@ -107,7 +107,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "3":
       await message.channel.send("Type your destiny points value: (0-99)");
-      let points = await data.fate_editor.collectInt(message.channel, message.author);
+      let points = await data.modules.fate_editor.collectInt(message.channel, message.author);
       if (!points) {
         message.channel.send("User doesn't have provided a valid value");
         return;
@@ -117,7 +117,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "4":
       await message.channel.send("Type your aspect concept: (Limit 28 chars)");
-      let concept = await data.fate_editor.collectString(28, message.channel, message.author);
+      let concept = await data.modules.fate_editor.collectString(28, message.channel, message.author);
       if (!concept) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -127,7 +127,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "5":
       await message.channel.send("Type your aspect problem: (Limit 28 chars)");
-      let problem = await data.fate_editor.collectString(28, message.channel, message.author);
+      let problem = await data.modules.fate_editor.collectString(28, message.channel, message.author);
       if (!problem) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -137,7 +137,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "6":
       await message.channel.send("Type your aspect free 1: (Limit 28 chars)");
-      let free1 = await data.fate_editor.collectString(28, message.channel, message.author);
+      let free1 = await data.modules.fate_editor.collectString(28, message.channel, message.author);
       if (!free1) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -147,7 +147,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "7":
       await message.channel.send("Type your aspect free 2: (Limit 28 chars)");
-      let free2 = await data.fate_editor.collectString(28, message.channel, message.author);
+      let free2 = await data.modules.fate_editor.collectString(28, message.channel, message.author);
       if (!free2) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -157,7 +157,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "8":
       await message.channel.send("Type your aspect free 3: (Limit 28 chars)");
-      let free3 = await data.fate_editor.collectString(28, message.channel, message.author);
+      let free3 = await data.modules.fate_editor.collectString(28, message.channel, message.author);
       if (!free3) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -166,7 +166,7 @@ exports.run = async (client, message, args, data) => {
       message.channel.send("Value saved with successful");
       break;
     case "9":
-      let approach = await data.fate_editor.collectApproach(message.channel, message.author, fatedata[0]);
+      let approach = await data.modules.fate_editor.collectApproach(message.channel, message.author, fatedata[0]);
       if (!approach) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -176,7 +176,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "10":
       await message.channel.send("Type your stunts: (Limit 1100 chars)");
-      let stunts = await data.fate_editor.collectString(1100, message.channel, message.author);
+      let stunts = await data.modules.fate_editor.collectString(1100, message.channel, message.author);
       if (!stunts) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -186,7 +186,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "11":
       await message.channel.send("Type your stress: (0-3)");
-      let stress = await data.fate_editor.collectStress(message.channel, message.author);
+      let stress = await data.modules.fate_editor.collectStress(message.channel, message.author);
       if (!stress) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -196,7 +196,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "12":
       await message.channel.send("Type your smooth consequence: (Limit 27 chars)");
-      let cons = await data.fate_editor.collectString(27, message.channel, message.author);
+      let cons = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!cons) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -206,7 +206,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "13":
       await message.channel.send("Type your moderate consequence: (Limit 27 chars)");
-      let conm = await data.fate_editor.collectString(27, message.channel, message.author);
+      let conm = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!conm) {
         message.channel.send("User doesn't have provided a value");
         return;
@@ -216,7 +216,7 @@ exports.run = async (client, message, args, data) => {
       break;
     case "14":
       await message.channel.send("Type your heavy consequence: (Limit 27 chars)");
-      let conh = await data.fate_editor.collectString(27, message.channel, message.author);
+      let conh = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!conh) {
         message.channel.send("User doesn't have provided a value");
         return;
