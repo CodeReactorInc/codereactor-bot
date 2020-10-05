@@ -59,10 +59,10 @@ function collectStress(channel, author) {
       max: 1
     });
     collector.on("end", (collected) => {
+      console.log(collected.size);
       if (collected.size === 0) {
         resolve(null);
       } else {
-        console.log(collected.first().content);
         if (parseInt(collected.first().content) <= 3 && parseInt(collected.first().content) >= 0) {
           resolve(parseInt(collected.first().content));
         } else {
