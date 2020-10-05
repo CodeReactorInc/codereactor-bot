@@ -34,7 +34,7 @@ exports.run = async (client, message, args, data) => {
   var msg;
 
   if (!card.name) {
-    msg = await message.channel.send("Type the name of the caracter: (Limit 32 chars)");
+    msg = await message.channel.send("Type the name of the character: (Limit 32 chars)");
 
     let name = await data.modules.fate_creator.collectString(32, message.channel, message.author);
 
