@@ -34,7 +34,7 @@ function collectString(size, channel, author) {
 
 function collectInt(channel, author) {
   return new Promise(async (resolve) => {
-    let collector = new Discord.MessageCollector(channel, (m) => parseInt(m.content) !== NaN && m.author.id === author.id, {
+    let collector = new Discord.MessageCollector(channel, (m) => !isNaN(parseInt(m.content)) && m.author.id === author.id, {
       time: 120000,
       max: 1
     });
@@ -54,7 +54,7 @@ function collectInt(channel, author) {
 
 function collectStress(channel, author) {
   return new Promise(async (resolve) => {
-    let collector = new Discord.MessageCollector(channel, (m) => parseInt(m.content) !== NaN && m.author.id === author.id, {
+    let collector = new Discord.MessageCollector(channel, (m) => !isNaN(parseInt(m.content)) && m.author.id === author.id, {
       time: 120000,
       max: 1
     });
@@ -62,7 +62,7 @@ function collectStress(channel, author) {
       if (collected.size === 0) {
         resolve(null);
       } else {
-        if (parseInt(collected.first().content) <= 3 && parseInt(collected.first().content) > -1) {
+        if (parseInt(collected.first().content) <= 3 && parseInt(collected.first().content) >= 0) {
           resolve(parseInt(collected.first().content));
         } else {
           resolve(null);
