@@ -1,4 +1,4 @@
-exports.run = (client, message, args, data) => {
+exports.run = async (client, message, args, data) => {
   data.logger.info("Testing if message author are the bot owner...");
 
   if (message.author.id !== data.config.OWNER_ID) {

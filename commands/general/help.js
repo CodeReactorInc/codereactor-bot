@@ -1,4 +1,4 @@
-exports.run = (client, message, args, data) => {
+exports.run = async (client, message, args, data) => {
   if (!args[0]) {
     let msg = "**Available modules:**\n\n";
     let modules = data.modules.help.module_list(data.server_config);
