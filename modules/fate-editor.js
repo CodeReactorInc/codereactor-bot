@@ -42,7 +42,7 @@ function collectInt(channel, author) {
       if (collected.size === 0) {
         resolve(null);
       } else {
-        if (parseInt(collected.first().content) <= 99 && parseInt(collected.first().content) > -1) {
+        if (parseInt(collected.first().content) <= 99 && parseInt(collected.first().content) >= 0) {
           resolve(parseInt(collected.first().content));
         } else {
           resolve(null);
@@ -62,6 +62,7 @@ function collectStress(channel, author) {
       if (collected.size === 0) {
         resolve(null);
       } else {
+        console.log(collected.first().content);
         if (parseInt(collected.first().content) <= 3 && parseInt(collected.first().content) >= 0) {
           resolve(parseInt(collected.first().content));
         } else {
