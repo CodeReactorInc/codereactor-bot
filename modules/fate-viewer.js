@@ -31,8 +31,9 @@ module.exports = async (fatedata) => {
       descLines.push(descLine);
       descLine = "";
     } else if (ctx.measureText(descLine + char).width > 608) {
-      descLines.push(descLine + char);
+      descLines.push(descLine);
       descLine = "";
+      descLine += char;
     } else {
       descLine += char;
     }
@@ -116,8 +117,9 @@ module.exports = async (fatedata) => {
       stuntLines.push(stuntLine);
       stuntLine = "";
     } else if (ctx.measureText(stuntLine + char).width > 958) {
-      stuntLines.push(stuntLine + char);
+      stuntLines.push(stuntLine);
       stuntLine = "";
+      stuntLine += char;
     } else {
       stuntLine += char;
     }
