@@ -89,7 +89,7 @@ client.on('message', async (message) => {
     data.logger = getLogger("Command '"+cmd+"'", streams);
     
     cmd_logger.info("Executing command...");
-    cmd_file.run(client, message, args, data);
+    await cmd_file.run(client, message, args, data);
   } catch (e) {
     cmd_logger.error(e);
   }
