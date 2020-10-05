@@ -39,7 +39,7 @@ exports.run = async (client, message, args, data) => {
     let name = await data.modules.fate_creator.collectString(32, message.channel, message.author);
 
     if (!name) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -57,7 +57,7 @@ exports.run = async (client, message, args, data) => {
     let aspcon = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!aspcon) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -75,7 +75,7 @@ exports.run = async (client, message, args, data) => {
     let aspro = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!aspro) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -93,7 +93,7 @@ exports.run = async (client, message, args, data) => {
     let asfre1 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre1) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -111,7 +111,7 @@ exports.run = async (client, message, args, data) => {
     let asfre2 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre2) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -129,7 +129,7 @@ exports.run = async (client, message, args, data) => {
     let asfre3 = await data.modules.fate_creator.collectString(28, message.channel, message.author);
 
     if (!asfre3) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -147,7 +147,7 @@ exports.run = async (client, message, args, data) => {
     let stunts = await data.modules.fate_creator.collectString(1100, message.channel, message.author);
 
     if (!stunts) {
-      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     }
 
@@ -194,7 +194,7 @@ exports.run = async (client, message, args, data) => {
     let skills = await data.modules.fate_creator.collectAspects(message.channel, message.author);
 
     if (!skills) {
-      message.channel.send("Timeout or invalid skill value, try again using '"+data.server_config.prefix+"ftcreator'");
+      message.channel.send("Timeout or invalid skill value, try again using '"+data.server_config.prefix+"ftcreate'");
       return;
     } 
 
