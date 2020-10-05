@@ -174,6 +174,11 @@ async function selector(channel, author, cache, mode, call) {
 }
 
 async function allocator(channel, author, stat, cache, call) {
+  if (cache[stat] !== null) {
+    await channel.send("Aspect aren't clear");
+    allocate(channel, author, cache, call);
+    return;
+  }
   let msg = await channel.send(
     "1. +0 ("+count("0", cache)+")\n"+
     "2. +1 ("+count("1", cache)+")\n"+
