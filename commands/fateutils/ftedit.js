@@ -1,4 +1,5 @@
 const { StreamDispatcher } = require("discord.js");
+const { TargetModifier } = require("rpg-dice-roller/types/Modifiers");
 
 exports.run = async (client, message, args, data) => {
   var user = message.author;
@@ -75,6 +76,7 @@ exports.run = async (client, message, args, data) => {
   );
   let op = await data.fate_editor.collectOperation(message.channel, message.author);
   
+  data.logger.info("Processing operation: "+op);
   switch (op) {
     case "0":
       await message.channel.send("Type the name of your character: (Limit 32 chars)");
