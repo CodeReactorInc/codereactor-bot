@@ -66,6 +66,7 @@ client.on('message', async (message) => {
       fate_creator: require('./modules/fate-creator.js'),
       fate_viewer: require('./modules/fate-viewer.js'),
       id_parser: require('./modules/id-parser.js'),
+      fate_editor: require('./modules/fate-editor.js'),
       help: require('./modules/help-module.js')
     },
     cache: cache
