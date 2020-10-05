@@ -86,13 +86,13 @@ exports.run = async (client, message, args, data) => {
       message.channel.send("Value saved with successful");
       break;
     case "1":
-      await message.channel.send("Type your description: (Limit 165 chars)");
+      await message.channel.send("Type your description: (Limit 165 chars/None)");
       let desc = await data.modules.fate_editor.collectString(165, message.channel, message.author);
       if (!desc) {
         message.channel.send("User doesn't have provided a value");
         return;
       }
-      await data.database.query("UPDATE discordbot.fate_data SET description = ? WHERE user_id = ? AND guild_id = ?", [desc, user.id, message.guild.id]);
+      await data.database.query("UPDATE discordbot.fate_data SET description = ? WHERE user_id = ? AND guild_id = ?", [((desc.toLowerCase() === "none") ? "" : desc), user.id, message.guild.id]);
       message.channel.send("Value saved with successful");
       break;
     case "2":
@@ -195,37 +195,37 @@ exports.run = async (client, message, args, data) => {
       message.channel.send("Value saved with successful");
       break;
     case "12":
-      await message.channel.send("Type your smooth consequence: (Limit 27 chars)");
+      await message.channel.send("Type your smooth consequence: (Limit 27 chars/None)");
       let cons = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!cons) {
         message.channel.send("User doesn't have provided a value");
         return;
       }
-      await data.database.query("UPDATE discordbot.fate_data SET consequence_smooth = ? WHERE user_id = ? AND guild_id = ?", [cons, user.id, message.guild.id]);
+      await data.database.query("UPDATE discordbot.fate_data SET consequence_smooth = ? WHERE user_id = ? AND guild_id = ?", [((cons.toLowerCase() === "none") ? "" : cons), user.id, message.guild.id]);
       message.channel.send("Value saved with successful");
       break;
     case "13":
-      await message.channel.send("Type your moderate consequence: (Limit 27 chars)");
+      await message.channel.send("Type your moderate consequence: (Limit 27 chars/None)");
       let conm = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!conm) {
         message.channel.send("User doesn't have provided a value");
         return;
       }
-      await data.database.query("UPDATE discordbot.fate_data SET consequence_moderate = ? WHERE user_id = ? AND guild_id = ?", [conm, user.id, message.guild.id]);
+      await data.database.query("UPDATE discordbot.fate_data SET consequence_moderate = ? WHERE user_id = ? AND guild_id = ?", [((conm.toLowerCase() === "none") ? "" : conm), user.id, message.guild.id]);
       message.channel.send("Value saved with successful");
       break;
     case "14":
-      await message.channel.send("Type your heavy consequence: (Limit 27 chars)");
+      await message.channel.send("Type your heavy consequence: (Limit 27 chars/None)");
       let conh = await data.modules.fate_editor.collectString(27, message.channel, message.author);
       if (!conh) {
         message.channel.send("User doesn't have provided a value");
         return;
       }
-      await data.database.query("UPDATE discordbot.fate_data SET consequence_heavy = ? WHERE user_id = ? AND guild_id = ?", [conh, user.id, message.guild.id]);
+      await data.database.query("UPDATE discordbot.fate_data SET consequence_heavy = ? WHERE user_id = ? AND guild_id = ?", [((conh.toLowerCase() === "none") ? "" : conh), user.id, message.guild.id]);
       message.channel.send("Value saved with successful");
       break;
     default:
-      message.channel.send("You selected a invalid option");
+      message.channel.send("You doesn't have selected a valid option");
       break;
   }
 };
