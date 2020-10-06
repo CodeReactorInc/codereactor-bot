@@ -16,8 +16,8 @@ exports.run = async (client, message, args, data) => {
   var msg = "";
   data.logger.info("Creating msg limited in 2000 chars...");
   for(var i = 0;i < lines.length;i++) {
-    if ((msg + lines[i] + "\n").length > 2000) break;
-    msg += lines[i] + "\n";
+    if ((lines[i] + "\n" + msg).length > 2000) break;
+    msg = lines[i] + "\n" + msg;
   }
   data.logger.info("Sending logger...");
   message.channel.send(msg);
