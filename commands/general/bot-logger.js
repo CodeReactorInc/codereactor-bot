@@ -10,7 +10,7 @@ exports.run = async (client, message, args, data) => {
   }
 
   data.logger.info("Reading latest.log...");
-  let log = fs.readFileSync(__dirname + '/../../logs/latest.log');
+  let log = fs.readFileSync(__dirname + '/../../logs/latest.log', { encoding: 'utf8'});
   data.logger.info("Building lines list and inverting...");
   let lines = log.split('\n').reverse();
   var msg = "";
