@@ -16,7 +16,7 @@ exports.run = async (client, message, args, data) => {
   msg += "Client version: "+require('../../package.json').dependencies["discord.js"].version+"\n";
 
   data.logger.info("Collection info from system...");
-  let ndate = new Date(process.uptime);
+  let ndate = new Date(process.uptime());
   msg += "**System info:**\n"+
     "NodeJS Version: "+process.version+"\n"+
     "NodeJS Uptime: "+ndate.getDay()+" days, "+ndate.getHours()+" hours, "+ndate.getMinutes()+" minutes, "+ndate.getSeconds()+" seconds\n"+
