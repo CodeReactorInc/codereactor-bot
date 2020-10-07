@@ -5,8 +5,8 @@ exports.run = async (client, message, args, data) => {
 };
 
 exports.help = {
-  description: "Get help about a module or command",
-  usage: ["help", "help [module]", "help [command]"],
-  name: "help",
+  description: "Invite the bot to your own server",
+  usage: ["invite"],
+  name: "invite",
   permissions: "everyone"
 };
