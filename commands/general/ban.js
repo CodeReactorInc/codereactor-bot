@@ -3,7 +3,7 @@ exports.run = async (client, message, args, data) => {
 
   if (!message.member.hasPermission("BAN_MEMBERS")) {
     data.logger.warn("Message author can't ban");
-    message.channel.send("You doesn't has 'Ban Members' permission");
+    message.channel.send("You doesn't has 'ban members' permission");
     return;
   }
 
