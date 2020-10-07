@@ -4,14 +4,14 @@ exports.run = async (client, message, args, data) => {
     "Developer: Code Reactor\n"+
     "Runtime: NodeJS\n"+
     "Lang: JavaScript\n"+
-    "Library: DiscordJS\n\n"
-    "Bot version: "+require('../../package.json').version+"\n";
+    "Library: DiscordJS\n\n"+
+    "Bot version: "+require('../../package.json').version+"\n"+
     "Update branch: master\n\n";
 
   data.logger.info("Collecting info from client...");
   msg += "**Client info:**\nClient ping: " + client.ws.ping + "ms\n";
   let date = new Date(client.uptime);
-  msg += "Client uptime: "+date.getUTCDate()+" days, "+date.getUTCHours()+" hours, "+date.getUTCMinutes()+" minutes, "+date.getUTCSeconds()+" seconds\n";
+  msg += "Client uptime: "+(date.getUTCDate()-1)+" days, "+date.getUTCHours()+" hours, "+date.getUTCMinutes()+" minutes, "+date.getUTCSeconds()+" seconds\n";
   msg += "Client shards: "+client.ws.shards.size+" shards\n";
   msg += "Client version: "+require('../../package.json').dependencies["discord.js"].version+"\n\n";
 
@@ -19,7 +19,7 @@ exports.run = async (client, message, args, data) => {
   let ndate = new Date(process.uptime());
   msg += "**System info:**\n"+
     "NodeJS Version: "+process.version+"\n"+
-    "NodeJS Uptime: "+ndate.getUTCDate()+" days, "+ndate.getUTCHours()+" hours, "+ndate.getUTCMinutes()+" minutes, "+ndate.getUTCSeconds()+" seconds\n"+
+    "NodeJS Uptime: "+(ndate.getUTCDate()-1)+" days, "+ndate.getUTCHours()+" hours, "+ndate.getUTCMinutes()+" minutes, "+ndate.getUTCSeconds()+" seconds\n"+
     "Platform: "+process.platform+"\n"+
     "Arch: "+process.arch+"\n"+
     "CPU Usage: "+process.cpuUsage().user+"/"+process.cpuUsage().system+"\n"+
