@@ -16,12 +16,17 @@ exports.run = async (client, message, args, data) => {
   msg += "Client version: "+require('../../package.json').dependencies["discord.js"].version+"\n";
 
   data.logger.info("Collection info from system...");
+  let ndate = new Date(process.uptime);
   msg += "**System info:**\n"+
     "NodeJS Version: "+process.version+"\n"+
+    "NodeJS Uptime: "+ndate.getDay()+" days, "+ndate.getHours()+" hours, "+ndate.getMinutes()+" minutes, "+ndate.getSeconds()+" seconds\n"+
     "Platform: "+process.platform+"\n"+
     "Arch: "+process.arch+"\n"+
     "CPU Usage: "+process.cpuUsage().user+"/"+process.cpuUsage().system+"\n"+
     "Memory Usage: "+process.memoryUsage().heapUsed+"/"+process.memoryUsage().heapTotal+"\n";
+
+  data.logger.info("Sending final message...");
+  message.channel.send(msg);
 };
 
 exports.help = {
