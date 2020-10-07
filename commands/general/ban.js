@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 exports.run = async (client, message, args, data) => {
   data.logger.info("Testing if message author can ban...");
 
