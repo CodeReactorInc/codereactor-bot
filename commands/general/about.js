@@ -13,7 +13,7 @@ exports.run = async (client, message, args, data) => {
   let date = new Date(client.uptime);
   msg += "Client uptime: "+date.getUTCDate()+" days, "+date.getUTCHours()+" hours, "+date.getUTCMinutes()+" minutes, "+date.getUTCSeconds()+" seconds\n";
   msg += "Client shards: "+client.ws.shards.size+" shards\n";
-  msg += "Client version: "+require('../../package.json').dependencies["discord.js"].version+"\n";
+  msg += "Client version: "+require('../../package.json').dependencies["discord.js"].version+"\n\n";
 
   data.logger.info("Collection info from system...");
   let ndate = new Date(process.uptime());
