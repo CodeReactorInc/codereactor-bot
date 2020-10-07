@@ -30,8 +30,8 @@ exports.run = async (client, message, args, data) => {
 };
 
 exports.help = {
-  description: "Ban the mentioned user from server",
-  usage: ["ban [id]", "ban [mention]", "ban [id] [message]", "ban [mention] [message]"],
-  name: "ban",
-  permissions: "ban members"
+  description: "Get information about the bot",
+  usage: ["about"],
+  name: "about",
+  permissions: "everyone"
 };
