@@ -34,6 +34,7 @@ Use ``npm start`` to run nodemon with correct arguments
 
 ### warn
 
+- id INT(8) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
 - user_id VARCHAR(20) NOT NULL
 - guild_id VARCHAR(20) NOT NULL
 - admin_id VARCHAR(20) NOT NULL
