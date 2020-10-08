@@ -8,12 +8,13 @@ This bot aren't created for self host, if want install and execute he, you need 
 ## How to install?
 
 1. (OPTIONAL) Create a user for the bot and add privileges for he
-2. Create a database named "discordbot"
-3. Create all tables needed on your MariaDB Server, [more info](https://github.com/CodeReactorInc/codereactor-bot#mariadb-needed-tables)
-4. Run after clone, run ``npm install`` to install declared dependencies
-5. Run ``node init.js`` to generate config.json file
-6. Configure the ``config.json``, insert MariaDB login info, Discord token and another things
-7. And run it
+2. Download and install ``git`` for update command
+3. Create a database named "discordbot"
+4. Create all tables needed on your MariaDB Server, [more info](https://github.com/CodeReactorInc/codereactor-bot#mariadb-needed-tables)
+5. Run after clone, run ``npm install`` to install declared dependencies
+6. Run ``node init.js`` to generate config.json file
+7. Configure the ``config.json``, insert MariaDB login info, Discord token and another things
+8. And run it
 
 ## How to run?
 
@@ -30,6 +31,13 @@ Use ``npm start`` to run nodemon with correct arguments
 7. Wait the Code Reactor verify and approve your request
 
 ## MariaDB needed tables
+
+### warn
+
+- user_id VARCHAR(20) NOT NULL
+- guild_id VARCHAR(20) NOT NULL
+- admin_id VARCHAR(20) NOT NULL
+- message VARCHAR(256) DEFAULT ''
 
 ### server_config
 
