@@ -24,7 +24,7 @@ exports.run = async (client, message, args, data) => {
     let warns = await data.database.query("SELECT id, message FROM discordbot.warn WHERE guild_id = ? AND user_id = ? LIMIT 10", [message.guild.id, user.id]);
 
     if (warns.length === 0) {
-      message.channel.send("You doesn't have warns");
+      message.channel.send("User doesn't have warns");
 
     } else {
       let msg = "";
@@ -50,7 +50,7 @@ exports.run = async (client, message, args, data) => {
     let warns = await data.database.query("SELECT id, message FROM discordbot.warn WHERE guild_id = ? AND user_id = ? LIMIT 10 OFFSET ?", [message.guild.id, user.id, (offset * 10)]);
 
     if (warns.length === 0) {
-      message.channel.send("You doesn't have warns");
+      message.channel.send("User doesn't have warns");
 
     } else {
       let msg = "";
