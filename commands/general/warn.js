@@ -22,7 +22,13 @@ exports.run = async (client, message, args, data) => {
     return;
   }
 
-  data.database.query("INSERT INTO discordbot.warn (user_id, admin_id, guild_id, message) VALUES (?, ?, ?, ?)", [user.id, message.author.id, message.guild.id, args.join(' ')]);
+  let msg = args.join(' ');
+  if (args.length > 256) {
+    message.channel.send("Message are to bigger ("+args.length+"/256)");
+    return;
+  }
+
+  data.database.query("INSERT INTO discordbot.warn (user_id, admin_id, guild_id, message) VALUES (?, ?, ?, ?)", [user.id, message.author.id, message.guild.id, msg]);
   message.channel.send("User warned with successfully!");
 };
 
