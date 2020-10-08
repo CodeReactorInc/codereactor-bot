@@ -5,7 +5,7 @@ exports.run = async (client, message, args, data) => {
     "Runtime: NodeJS\n"+
     "Library: DiscordJS\n"+
     "Bot version: "+require('../../package.json').version+"\n"+
-    "GitHub Repository: https://github.com/CodeReactorInc/codereactor-bot\n"+
+    "GitHub Repository: <https://github.com/CodeReactorInc/codereactor-bot>\n"+
     "Update branch: master\n\n";
 
   data.logger.info("Collecting info from client...");
