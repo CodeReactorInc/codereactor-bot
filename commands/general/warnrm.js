@@ -13,7 +13,7 @@ exports.run = async (client, message, args, data) => {
     return;
   }
 
-  let id = parseInt(args[0]);
+  let id = parseInt(args[1]);
 
   if (!isFinite(id) || isNaN(id)) {
     message.channel.send("Please use a valid number on warn id");
