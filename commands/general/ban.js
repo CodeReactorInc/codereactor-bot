@@ -7,6 +7,7 @@ exports.run = async (client, message, args, data) => {
     return;
   }
 
+  data.logger.info("Verifying args size...");
   if (args.length < 1) {
     data.logger.warn("User doesn't mention a user to ban");
     message.channel.send("You need mention a user to ban");
@@ -16,8 +17,10 @@ exports.run = async (client, message, args, data) => {
   data.logger.info("Resolving user from args...")
   let user = message.guild.members.resolve(data.modules.id_parser(args.shift()));
 
+  
+  data.logger.info("Testing if a user has been found...");
   if (!user) {
-    data.logger.warn("User doesn't provided valid user to ban");
+    data.logger.warn("User doesn't has been founded");
     message.channel.send("Please mention a valid user to ban");
     return;
   }
