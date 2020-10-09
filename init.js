@@ -13,12 +13,17 @@ logger.info("Trying to read config.json...");
 if (!fs.existsSync(__dirname+"/config.json")) {
   logger.warn("Config.json don't found, generating...");
   fs.writeFileSync(__dirname+"/config.json", JSON.stringify({
+    MANIFEST: 1,
     TOKEN: "Discord Token",
     OWNER_ID: "Your ID",
     MARIADB: {
       HOST: "localhost",
       USER: "",
       PASSWORD: ""
+    },
+    UPDATER: {
+      GIT_CMD: 'git',
+      BRANCH: 'master'
     },
     LIST: [],
     RESTART_ON_ERROR: false,
@@ -31,6 +36,30 @@ var shards = null;
 logger.info("Loading config.json...");
 const config = JSON.parse(fs.readFileSync(__dirname+"/config.json"));
 logger.info("Config loaded");
+
+logger.info("Testing if config are in new format...");
+if (config.MANIFEST === null || config.MANIFEST === undefined) {
+  logger.info("Recreating and updating config.json...");
+  fs.writeFileSync(__dirname+"/config.json", JSON.stringify({
+    MANIFEST: 1,
+    TOKEN: config.TOKEN,
+    OWNER_ID: config.OWNER_ID,
+    MARIADB: {
+      HOST: config.MARIADB.HOST,
+      USER: config.MARIADB.USER,
+      PASSWORD: config.MARIADB.PASSWORD
+    },
+    UPDATER: {
+      GIT_CMD: 'git',
+      BRANCH: 'master'
+    },
+    LIST: config.LIST,
+    RESTART_ON_ERROR: config.RESTART_ON_ERROR,
+    SHARDS: config.SHARDS
+  }, null, 4));
+  logger.info("Config.json rewrited, please restart");
+  return;
+}
 
 logger.info("Importing Discord and creating manager...");
 

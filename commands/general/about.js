@@ -6,7 +6,7 @@ exports.run = async (client, message, args, data) => {
     "Library: DiscordJS\n"+
     "Bot version: "+require('../../package.json').version+"\n"+
     "GitHub Repository: <https://github.com/CodeReactorInc/codereactor-bot>\n"+
-    "Update branch: master\n\n";
+    "Update branch: "+data.config.UPDATER.BRANCH+"\n\n";
 
   data.logger.info("Collecting info from client...");
   msg += "**Client info:**\nClient ping: " + client.ws.ping + "ms\n";

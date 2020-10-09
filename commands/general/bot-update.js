@@ -9,19 +9,28 @@ exports.run = async (client, message, args, data) => {
     return;
   }
 
-  message.channel.send("Preparing to start git detached...");
+  message.channel.send("Preparing to start git... (Update branch: '"+data.config.UPDATER.BRANCH+"')");
   data.logger.warn("Bot are executing 'git pull'");
   data.logger.warn("Prepare for a possibly restart");
 
-  let cwd = child_process.spawn('git', ['pull', 'origin', 'master'], {
+  let cwd = child_process.spawn(data.config.UPDATER.GIT_CMD, ['pull', 'origin', data.config.UPDATER.BRANCH], {
     cwd: __dirname+"/../../",
     detached: true,
     stdio: 'ignore'
   });
   cwd.unref();
 
-  data.logger.info("Git started with successful");
-  message.channel.send("Git started! Updating...");
+  data.logger.info("Git started with successful, waiting git exit...");
+  message.channel.send("Git are started with successful");
+
+  cwd.on('exit', (code) => {
+    data.logger.info("Git has exited ("+code+")");
+    if (code === 0) {
+      message.channel.send("Git update finalized with successful");
+    } else {
+      message.channel.send("Git update finalized with exit code: "+code);
+    }
+  });
 };
 
 exports.help = {
