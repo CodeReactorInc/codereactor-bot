@@ -16,12 +16,14 @@ exports.run = async (client, message, args, data) => {
   data.logger.info("Resolving user from args...")
   let user = message.guild.members.resolve(data.modules.id_parser(args.shift()));
 
+  data.logger.info("Testing if a user has been found...");
   if (!user) {
-    data.logger.warn("User doesn't provided valid user to kick");
+    data.logger.warn("User doesn't has been founded");
     message.channel.send("Please mention a valid user to clear warns");
     return;
   }
 
+  data.logger.info("Sending query to database...");
   data.database.query("DELETE FROM discordbot.warn WHERE guild_id = ? AND user_id = ?", [message.guild.id, user.id]);
   message.channel.send("Deleted all warns from mentioned user");
 };
